@@ -4,19 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".bitmap.BitmapEntryActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/btn_bitmap"
+            android:id="@+id/btnSubsamplingScaleImageView"
             style="@style/btn_style_lower"
-            android:text="bitmap"
+            android:text="大图加载：subsampling-scale-image-view"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnBitmapOptions"
+            style="@style/btn_style_lower"
+            android:text="开发艺术探索：Bitmap采样率实战"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnSubsamplingScaleImageView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
