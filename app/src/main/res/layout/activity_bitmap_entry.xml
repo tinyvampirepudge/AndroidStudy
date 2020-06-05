@@ -24,6 +24,13 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btnSubsamplingScaleImageView" />
 
+        <Button
+            android:id="@+id/btnBitmapType"
+            style="@style/btn_style_lower"
+            android:text="获取Bitmap类型"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnBitmapOptions" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>

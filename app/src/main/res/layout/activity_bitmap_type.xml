@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context=".bitmap.type.BitmapTypeActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btnJpeg"
+            style="@style/btn_style_lower"
+            android:text="jpeg"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivJpeg"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnJpeg" />
+
+        <TextView
+            android:id="@+id/tvJpegInfoByHead"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="根据文件头信息判断类型:"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivJpeg" />
+
+        <TextView
+            android:id="@+id/tvJpegInfoByBmpOptions"
+            style="@style/btn_style_lower"
+            android:text="根据BitmapFactory.Options判断类型:"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvJpegInfoByHead" />
+
+        <Button
+            android:id="@+id/btnPng"
+            style="@style/btn_style_lower"
+            android:text="png"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvJpegInfoByBmpOptions" />
+
+        <ImageView
+            android:id="@+id/ivPng"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnPng" />
+
+        <TextView
+            android:id="@+id/tvPngInfoByHead"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="根据文件头信息判断类型:"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivPng" />
+
+        <TextView
+            android:id="@+id/tvPngInfoByBmpOptions"
+            style="@style/btn_style_lower"
+            android:text="根据BitmapFactory.Options判断类型:"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPngInfoByHead" />
+
+        <Button
+            android:id="@+id/btnGif"
+            style="@style/btn_style_lower"
+            android:text="gif"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPngInfoByBmpOptions" />
+
+        <ImageView
+            android:id="@+id/ivGif"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnGif" />
+
+        <TextView
+            android:id="@+id/tvGifInfoByHead"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="根据文件头信息判断类型:"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivGif" />
+
+        <TextView
+            android:id="@+id/tvGifInfoByBmpOptions"
+            style="@style/btn_style_lower"
+            android:text="根据BitmapFactory.Options判断类型:"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvGifInfoByHead" />
+
+        <Button
+            android:id="@+id/btnWebp"
+            style="@style/btn_style_lower"
+            android:text="jpeg"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvGifInfoByBmpOptions" />
+
+        <ImageView
+            android:id="@+id/ivWebp"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnWebp" />
+
+        <TextView
+            android:id="@+id/tvWebpInfoByHead"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="根据文件头信息判断类型:"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivWebp" />
+
+        <TextView
+            android:id="@+id/tvWebpInfoByBmpOptions"
+            style="@style/btn_style_lower"
+            android:text="根据BitmapFactory.Options判断类型:"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvWebpInfoByHead" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

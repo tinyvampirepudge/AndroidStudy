@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.tinytongtong.androidstudy.R
 import com.tinytongtong.androidstudy.bitmap.large.SubsamplingScaleImageViewActivity
 import com.tinytongtong.androidstudy.bitmap.options.BitmapFactoryOptionsActivity
+import com.tinytongtong.androidstudy.bitmap.type.BitmapTypeActivity
 import kotlinx.android.synthetic.main.activity_bitmap_entry.*
 
 /**
@@ -31,6 +32,10 @@ class BitmapEntryActivity : AppCompatActivity() {
 
         btnBitmapOptions.setOnClickListener {
             startActivity(Intent(this, BitmapFactoryOptionsActivity::class.java))
+        }
+
+        btnBitmapType.setOnClickListener {
+            startActivity(Intent(this, BitmapTypeActivity::class.java))
         }
     }
 }
