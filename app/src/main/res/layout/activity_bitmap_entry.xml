@@ -31,6 +31,13 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btnBitmapOptions" />
 
+        <Button
+            android:id="@+id/btnBitmapCompress"
+            style="@style/btn_style_lower"
+            android:text="Bitmap压缩"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnBitmapType" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>

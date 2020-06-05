@@ -4,6 +4,8 @@ import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import com.tinytongtong.tinyutils.LogUtils
+import java.io.FileInputStream
+import java.io.InputStream
 
 /**
  * @Description:
@@ -29,7 +31,7 @@ object BitmapOptionsUtil {
         // 获取图片宽高
         val options = BitmapFactory.Options()
         options.inJustDecodeBounds = true
-        BitmapFactory.decodeResource(res, resId, options);
+        BitmapFactory.decodeResource(res, resId, options)
         // 计算采样率
         options.inSampleSize = calcInSampleSize(options, reqWidth, reqHeight)
         options.inJustDecodeBounds = false
@@ -39,7 +41,11 @@ object BitmapOptionsUtil {
     /**
      * 计算合适的采样率，采样率必须是2的倍数
      */
-    fun calcInSampleSize(options: BitmapFactory.Options, reqWidth: Int, reqHeight: Int): Int {
+    private fun calcInSampleSize(
+        options: BitmapFactory.Options,
+        reqWidth: Int,
+        reqHeight: Int
+    ): Int {
         // 获取image的宽高
         val height = options.outHeight
         val width = options.outWidth
@@ -57,5 +63,24 @@ object BitmapOptionsUtil {
         }
         LogUtils.e("BitmapOptionsUtil", "result inSampleSize:$inSampleSize")
         return inSampleSize
+    }
+
+    /**
+     * 通过采样率可以有效的加载图片。从stream中
+     */
+    fun decodeSampledBitmapFromFileStream(
+        fileInputStream: FileInputStream,
+        reqWidth: Int,
+        reqHeight: Int
+    ): Bitmap? {
+        // 获取图片宽高
+        val options = BitmapFactory.Options()
+        options.inJustDecodeBounds = true
+
+        BitmapFactory.decodeFileDescriptor(fileInputStream.fd, null, options)
+        // 计算采样率
+        options.inSampleSize = calcInSampleSize(options, reqWidth, reqHeight)
+        options.inJustDecodeBounds = false
+        return BitmapFactory.decodeFileDescriptor(fileInputStream.fd, null, options)
     }
 }

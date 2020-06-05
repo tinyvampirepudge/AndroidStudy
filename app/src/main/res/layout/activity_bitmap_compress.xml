@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".bitmap.compress.BitmapCompressActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/tvOriginJpg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="原图Jpg："
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivOriginJpg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvOriginJpg" />
+
+        <TextView
+            android:id="@+id/tvOriginJpgInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="原图Jpg信息："
+            app:layout_constraintTop_toBottomOf="@id/ivOriginJpg" />
+
+        <Button
+            android:id="@+id/btnQualityJpg"
+            style="@style/btn_style_lower"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="jpg图片进行quality质量压缩"
+            app:layout_constraintTop_toBottomOf="@id/tvOriginJpgInfo" />
+
+        <ImageView
+            android:id="@+id/ivQualityJpg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnQualityJpg" />
+
+        <TextView
+            android:id="@+id/tvQualityJpgInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Jpg进行Quality压缩后的信息："
+            app:layout_constraintTop_toBottomOf="@id/ivQualityJpg" />
+
+        <Button
+            android:id="@+id/btnBmpConfigJpg"
+            style="@style/btn_style_lower"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="jpg图片通过Bitmap.Config减少内存占用"
+            app:layout_constraintTop_toBottomOf="@id/tvQualityJpgInfo" />
+
+        <ImageView
+            android:id="@+id/ivBmpConfigJpg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnBmpConfigJpg" />
+
+        <TextView
+            android:id="@+id/tvBmpConfigJpgInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Jpg通过Bitmap.Config压缩后的信息："
+            app:layout_constraintTop_toBottomOf="@id/ivBmpConfigJpg" />
+
+        <Button
+            android:id="@+id/btnInSampleSizeJpg"
+            style="@style/btn_style_lower"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="jpg图片通过inSampleSize减少内存占用"
+            app:layout_constraintTop_toBottomOf="@id/tvBmpConfigJpgInfo" />
+
+        <ImageView
+            android:id="@+id/ivInSampleSizeJpg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnInSampleSizeJpg" />
+
+        <TextView
+            android:id="@+id/tvInSampleSizeJpgInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Jpg通过inSampleSize压缩后的信息："
+            app:layout_constraintTop_toBottomOf="@id/ivInSampleSizeJpg" />
+
+        <Button
+            android:id="@+id/btnMatrixJpg"
+            style="@style/btn_style_lower"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="jpg图片通过Matrix减少内存占用"
+            app:layout_constraintTop_toBottomOf="@id/tvInSampleSizeJpgInfo" />
+
+        <ImageView
+            android:id="@+id/ivMatrixJpg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnMatrixJpg" />
+
+        <TextView
+            android:id="@+id/tvMatrixJpgInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Jpg通过Matrix压缩后的信息："
+            app:layout_constraintTop_toBottomOf="@id/ivMatrixJpg" />
+
+        <TextView
+            android:id="@+id/tvOriginPng"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="原图Png："
+            app:layout_constraintTop_toBottomOf="@+id/tvMatrixJpgInfo" />
+
+        <ImageView
+            android:id="@+id/ivOriginPng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvOriginPng" />
+
+        <TextView
+            android:id="@+id/tvOriginPngInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="原图Png信息："
+            app:layout_constraintTop_toBottomOf="@id/ivOriginPng" />
+
+        <Button
+            android:id="@+id/btnQualityPng"
+            style="@style/btn_style_lower"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Png图片进行quality质量压缩"
+            app:layout_constraintTop_toBottomOf="@id/tvOriginPngInfo" />
+
+        <ImageView
+            android:id="@+id/ivQualityPng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnQualityPng" />
+
+        <TextView
+            android:id="@+id/tvQualityPngInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Png进行Quality压缩后的信息："
+            app:layout_constraintTop_toBottomOf="@id/ivQualityPng" />
+
+        <Button
+            android:id="@+id/btnBmpConfigPng"
+            style="@style/btn_style_lower"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Png图片通过Bitmap.Config减少内存占用"
+            app:layout_constraintTop_toBottomOf="@id/tvQualityPngInfo" />
+
+        <ImageView
+            android:id="@+id/ivBmpConfigPng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnBmpConfigPng" />
+
+        <TextView
+            android:id="@+id/tvBmpConfigPngInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Png通过Bitmap.Config压缩后的信息："
+            app:layout_constraintTop_toBottomOf="@id/ivBmpConfigPng" />
+
+        <Button
+            android:id="@+id/btnInSampleSizePng"
+            style="@style/btn_style_lower"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Png图片通过inSampleSize减少内存占用"
+            app:layout_constraintTop_toBottomOf="@id/tvBmpConfigPngInfo" />
+
+        <ImageView
+            android:id="@+id/ivInSampleSizePng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnInSampleSizePng" />
+
+        <TextView
+            android:id="@+id/tvInSampleSizePngInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Png通过inSampleSize压缩后的信息："
+            app:layout_constraintTop_toBottomOf="@id/ivInSampleSizePng" />
+
+        <Button
+            android:id="@+id/btnMatrixPng"
+            style="@style/btn_style_lower"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Png图片通过Matrix减少内存占用"
+            app:layout_constraintTop_toBottomOf="@id/tvInSampleSizePngInfo" />
+
+        <ImageView
+            android:id="@+id/ivMatrixPng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnMatrixPng" />
+
+        <TextView
+            android:id="@+id/tvMatrixPngInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Png通过Matrix压缩后的信息："
+            app:layout_constraintTop_toBottomOf="@id/ivMatrixPng" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.tinytongtong.androidstudy.R
+import com.tinytongtong.androidstudy.bitmap.compress.BitmapCompressActivity
 import com.tinytongtong.androidstudy.bitmap.large.SubsamplingScaleImageViewActivity
 import com.tinytongtong.androidstudy.bitmap.options.BitmapFactoryOptionsActivity
 import com.tinytongtong.androidstudy.bitmap.type.BitmapTypeActivity
@@ -36,6 +37,10 @@ class BitmapEntryActivity : AppCompatActivity() {
 
         btnBitmapType.setOnClickListener {
             startActivity(Intent(this, BitmapTypeActivity::class.java))
+        }
+
+        btnBitmapCompress.setOnClickListener {
+            startActivity(Intent(this, BitmapCompressActivity::class.java))
         }
     }
 }
