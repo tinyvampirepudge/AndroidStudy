@@ -86,7 +86,7 @@ class BitmapCompressActivity : AppCompatActivity() {
             val fileInputStream = assetFileDescriptor.createInputStream()
             val bmpInSampleSizeJpg = BitmapOptionsUtil.decodeSampledBitmapFromFileStream(
                 fileInputStream,
-                ScreenUtils.dip2px(this, 60f),
+                ScreenUtils.dip2px(this, 80f),
                 ScreenUtils.dip2px(this, 45f)
             )
             val descBmpConfigJpg =
@@ -107,7 +107,7 @@ class BitmapCompressActivity : AppCompatActivity() {
             // Bitmap.createScaledBitmap内部也会使用Matrix进行缩放
 //            val bmpMatrixJpg = Bitmap.createScaledBitmap(
 //                bmpOriginJpg,
-//                ScreenUtils.dip2px(this, 60f),
+//                ScreenUtils.dip2px(this, 80f),
 //                ScreenUtils.dip2px(this, 45f),
 //                true
 //            )
@@ -178,7 +178,7 @@ class BitmapCompressActivity : AppCompatActivity() {
             // Bitmap.createScaledBitmap内部也会使用Matrix进行缩放
 //            val bmpMatrixPng = Bitmap.createScaledBitmap(
 //                bmpOriginPng,
-//                ScreenUtils.dip2px(this, 60f),
+//                ScreenUtils.dip2px(this, 80f),
 //                ScreenUtils.dip2px(this, 45f),
 //                true
 //            )
