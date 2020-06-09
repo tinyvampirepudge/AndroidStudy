@@ -9,8 +9,8 @@ class ActivityAnimActivity : AppCompatActivity() {
         setContentView(R.layout.activity_anim)
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
+    override fun finish() {
+        super.finish()
         // 退出，从上往下动画
         overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up)
     }
