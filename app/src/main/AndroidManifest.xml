@@ -11,10 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".bitmap.compress.BitmapCompressActivity"></activity>
+        <activity android:name=".ActivityAnimActivity"
+            android:theme="@style/AnimationActivityTopDown"></activity>
+        <activity android:name=".bitmap.compress.BitmapCompressActivity" />
         <activity
             android:name=".bitmap.type.BitmapTypeActivity"
-            android:label="获取网络图片格式" />
+            android:label="获取网络图片格式"
+            />
         <activity
             android:name=".bitmap.options.BitmapFactoryOptionsActivity"
             android:label="bitmap采样率压缩图片" />
