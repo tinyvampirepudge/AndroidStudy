@@ -3,7 +3,10 @@ package com.tinytongtong.androidstudy
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.tinytongtong.androidstudy.aidl.BinderTestActivity
+import com.tinytongtong.androidstudy.anim.ActivityAnimActivity
 import com.tinytongtong.androidstudy.bitmap.BitmapEntryActivity
+import com.tinytongtong.androidstudy.validateui.ValidateUiInSubThreadActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -20,6 +23,13 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, ActivityAnimActivity::class.java))
             // 进入，从下往上动画
             overridePendingTransition(R.anim.slide_in_down, R.anim.slide_out_down)
+        }
+
+        btn_activity_validate_ui_in_sub_thread.setOnClickListener {
+            startActivity(Intent(this, ValidateUiInSubThreadActivity::class.java))
+        }
+        btn_activity_binder_test.setOnClickListener {
+            startActivity(Intent(this, BinderTestActivity::class.java))
         }
     }
 }

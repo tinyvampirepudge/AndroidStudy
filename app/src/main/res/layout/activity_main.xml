@@ -26,6 +26,21 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_bitmap" />
 
+        <Button
+            android:id="@+id/btn_activity_validate_ui_in_sub_thread"
+            style="@style/btn_style_lower"
+            android:text="子线程更新UI"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_activity_anim" />
+
+        <Button
+            android:id="@+id/btn_activity_binder_test"
+            style="@style/btn_style_lower"
+            android:text="使用Binder跨进程通信"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_activity_validate_ui_in_sub_thread" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>

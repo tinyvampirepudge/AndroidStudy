@@ -4,7 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
-    tools:context=".anim.ActivityAnimActivity">
+    tools:context=".validateui.ValidateUiInSubThreadActivity">
+
+    <Button
+        android:id="@+id/btn_validate_ui_in_sub_thread"
+        style="@style/btn_style_lower"
+        android:text="子线程更新UI"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

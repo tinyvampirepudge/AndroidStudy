@@ -3,6 +3,7 @@
     package="com.tinytongtong.androidstudy">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:name=".MyApplication"
@@ -12,10 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".aidl.BinderTestActivity"></activity>
+        <activity android:name=".validateui.ValidateUiInSubThreadActivity" />
         <activity
-            android:name=".ActivityAnimActivity"
+            android:name=".anim.ActivityAnimActivity"
             android:label="Activity动画"
-            android:theme="@style/TopDownAnim"></activity>
+            android:theme="@style/TopDownAnim" />
         <activity android:name=".bitmap.compress.BitmapCompressActivity" />
         <activity
             android:name=".bitmap.type.BitmapTypeActivity"
