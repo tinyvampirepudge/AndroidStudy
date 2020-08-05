@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".aidl.BinderTestActivity"></activity>
+        <activity android:name=".jsonparse.JsonParseTestActivity"></activity>
+        <activity android:name=".jsonparse.JsonParseTestActivity" />
+        <activity android:name=".aidl.BinderTestActivity" />
         <activity android:name=".validateui.ValidateUiInSubThreadActivity" />
         <activity
             android:name=".anim.ActivityAnimActivity"

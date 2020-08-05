@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.tinytongtong.androidstudy.aidl.BinderTestActivity
 import com.tinytongtong.androidstudy.anim.ActivityAnimActivity
 import com.tinytongtong.androidstudy.bitmap.BitmapEntryActivity
+import com.tinytongtong.androidstudy.jsonparse.JsonParseTestActivity
 import com.tinytongtong.androidstudy.validateui.ValidateUiInSubThreadActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -30,6 +31,10 @@ class MainActivity : AppCompatActivity() {
         }
         btn_activity_binder_test.setOnClickListener {
             startActivity(Intent(this, BinderTestActivity::class.java))
+        }
+
+        btn_activity_parse_json_test.setOnClickListener {
+            startActivity(Intent(this, JsonParseTestActivity::class.java))
         }
     }
 }
