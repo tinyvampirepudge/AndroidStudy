@@ -13,7 +13,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".jsonparse.JsonParseTestActivity"></activity>
         <activity android:name=".jsonparse.JsonParseTestActivity" />
         <activity android:name=".aidl.BinderTestActivity" />
         <activity android:name=".validateui.ValidateUiInSubThreadActivity" />
@@ -34,6 +33,7 @@
         <activity
             android:name=".bitmap.large.SubsamplingScaleImageViewActivity"
             android:label="bitmap加载超大图" />
+        <activity android:name=".draw.CustomViewGroupActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -22,11 +22,11 @@ public class MethodHandleTest {
 
     public static void main(String[] args) throws Throwable {
         Object obj = count % 2 == 0 ? System.out : new ClassA();
-        getPrintlnMH(obj).invokeExact("icyfenix");
+//        getPrintlnMH(obj).invokeExact("icyfenix");
     }
 
-    private static MethodHandle getPrintlnMH(Object receiver) throws Throwable {
-        MethodType mt = MethodType.methodType(void.class, String.class);
-        return MethodHandles.lookup().findVirtual(receiver.getClass(),"println",mt).bindTo(receiver);
-    }
+//    private static MethodHandle getPrintlnMH(Object receiver) throws Throwable {
+//        MethodType mt = MethodType.methodType(void.class, String.class);
+//        return MethodHandles.lookup().findVirtual(receiver.getClass(),"println",mt).bindTo(receiver);
+//    }
 }
