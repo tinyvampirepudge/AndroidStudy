@@ -2,7 +2,7 @@ package com.tinytongtong.androidstudy.jvm;
 
 /**
  * @Description: TODO
- * @Author wangjianzhou@qding.me
+ * @Author tinytongtong
  * @Date 2020/8/10 7:28 PM
  * @Version TODO
  */

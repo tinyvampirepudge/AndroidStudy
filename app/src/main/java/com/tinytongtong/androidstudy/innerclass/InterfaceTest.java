@@ -2,7 +2,7 @@ package com.tinytongtong.androidstudy.innerclass;
 
 /**
  * @Description: TODO
- * @Author wangjianzhou@qding.me
+ * @Author tinytongtong
  * @Date 2020/6/18 5:28 PM
  * @Version TODO
  */

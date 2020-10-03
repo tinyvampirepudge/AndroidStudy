@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * @Description: 图片文件类型
  * https://my.oschina.net/ososchina/blog/1610685
- * @Author wangjianzhou@qding.me
+ * @Author tinytongtong
  * @Date 2020/6/5 8:11 AM
  * @Version
  */

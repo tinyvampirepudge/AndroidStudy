@@ -4,7 +4,7 @@ import com.bumptech.glide.load.model.ByteArrayLoader;
 
 /**
  * @Description: 基本类型的缓存池探究
- * @Author wangjianzhou@qding.me
+ * @Author tinytongtong
  * @Date 2020/8/5 9:50 PM
  * @Version
  */

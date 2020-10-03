@@ -4,7 +4,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @Description: TODO
- * @Author wangjianzhou@qding.me
+ * @Author tinytongtong
  * @Date 2020/8/25 3:45 PM
  * @Version TODO
  */

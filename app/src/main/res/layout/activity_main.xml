@@ -57,6 +57,15 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_activity_parse_json_test" />
+
+        <Button
+            android:id="@+id/btnTransactionTooLargeException"
+            style="@style/btn_style_lower"
+            android:text="TransactionTooLargeException"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_activity_custom_view_roup" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>

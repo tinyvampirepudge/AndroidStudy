@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 /**
  * @Description: TODO
- * @Author wangjianzhou@qding.me
+ * @Author tinytongtong
  * @Date 2020/6/18 12:12 PM
  * @Version TODO
  */

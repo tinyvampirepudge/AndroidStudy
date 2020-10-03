@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".framework.chapter901.TransactionTooLargeExceptionActivity">
+
+    <ImageView
+        android:id="@+id/ivLargeBitmap"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnLargeBitmapByBundle"
+        style="@style/btn_style_lower"
+        android:layout_marginTop="10dp"
+        android:text="LargeBitmapByBundle"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivLargeBitmap" />
+
+    <Button
+        android:id="@+id/btnLargeBitmapByBinder"
+        style="@style/btn_style_lower"
+        android:text="LargeBitmapByBinder"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnLargeBitmapByBundle" />
+
+    <Button
+        android:id="@+id/btnLargeListByMemoryFile"
+        style="@style/btn_style_lower"
+        android:text="LargeListByMemoryFile"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnLargeBitmapByBinder" />
+
+    <Button
+        android:id="@+id/btnLargeListByContentProvider"
+        style="@style/btn_style_lower"
+        android:text="LargeListByContentProvider"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnLargeListByMemoryFile" />
+</androidx.constraintlayout.widget.ConstraintLayout>
