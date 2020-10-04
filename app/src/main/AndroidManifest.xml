@@ -13,7 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".framework.chapter901.TransactLargeListBitmapActivity"></activity>
+        <activity
+            android:name=".framework.chapter901.TransactLargeListDataActivity"
+            android:label="通过Binder传递大量列表数据" />
+        <activity android:name=".framework.chapter901.TransactLargeListBitmapActivity" />
         <activity android:name=".framework.chapter901.TransactionTooLargeExceptionResultActivity" />
         <activity android:name=".framework.chapter901.TransactionTooLargeExceptionActivity" />
         <activity android:name=".dialog.DialogWithApplicationCtxActivity" />

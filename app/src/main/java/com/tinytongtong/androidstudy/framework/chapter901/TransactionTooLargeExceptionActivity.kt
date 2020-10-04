@@ -7,8 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.tinytongtong.androidstudy.R
-import com.tinytongtong.androidstudy.aidl.ILargeBitmapCallback
-import com.tinytongtong.androidstudy.aidl.ILargeBitmapListCallback
+import com.tinytongtong.androidstudy.aidl.*
 import kotlinx.android.synthetic.main.activity_transaction_too_large_exception.*
 
 /**
@@ -67,6 +66,28 @@ class TransactionTooLargeExceptionActivity : AppCompatActivity() {
 
             })
             i.putExtras(bundle)
+            startActivity(i)
+        }
+
+        // 通过Binder传递大量列表数据，是可以的。
+        // 普通的Intent#putParcelableArrayListExtra会报异常，Caused by: android.os.TransactionTooLargeException: data parcel size 1680092 bytes
+        btnLargeListDataByBinder.setOnClickListener {
+            val dataList = arrayListOf<LargeListBean>()
+            for (x in 0 until 10000) {
+                val person = PersonBean("maolegemi${x}", x)
+                val data = LargeListBean(x, x, person)
+                dataList.add(data)
+            }
+            val i = Intent(this, TransactLargeListDataActivity::class.java)
+            val bundle = Bundle()
+            bundle.putBinder("data-list-binder", object : ILargeDataListCallback.Stub() {
+                override fun getDataList(): MutableList<LargeListBean> {
+                    return dataList
+                }
+            })
+            i.putExtras(bundle)
+            // Caused by: android.os.TransactionTooLargeException: data parcel size 1680092 bytes
+//            i.putParcelableArrayListExtra("xxx",dataList)
             startActivity(i)
         }
     }

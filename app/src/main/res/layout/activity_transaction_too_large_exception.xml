@@ -40,12 +40,20 @@
         app:layout_constraintTop_toBottomOf="@id/btnLargeBitmapByBinder" />
 
     <Button
+        android:id="@+id/btnLargeListDataByBinder"
+        style="@style/btn_style_lower"
+        android:text="LargeListDataByBinder"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnLargeListBitmapByBinder" />
+
+    <Button
         android:id="@+id/btnLargeListByMemoryFile"
         style="@style/btn_style_lower"
         android:text="LargeListBitmapByMemoryFile"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnLargeListBitmapByBinder" />
+        app:layout_constraintTop_toBottomOf="@id/btnLargeListDataByBinder" />
 
     <Button
         android:id="@+id/btnLargeListByContentProvider"
