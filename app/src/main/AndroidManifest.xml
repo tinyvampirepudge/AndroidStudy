@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".framework.chapter901.TransactionTooLargeExceptionResultActivity"></activity>
+        <activity android:name=".framework.chapter901.TransactLargeListBitmapActivity"></activity>
+        <activity android:name=".framework.chapter901.TransactionTooLargeExceptionResultActivity" />
         <activity android:name=".framework.chapter901.TransactionTooLargeExceptionActivity" />
         <activity android:name=".dialog.DialogWithApplicationCtxActivity" />
         <activity android:name=".jsonparse.JsonParseTestActivity" />

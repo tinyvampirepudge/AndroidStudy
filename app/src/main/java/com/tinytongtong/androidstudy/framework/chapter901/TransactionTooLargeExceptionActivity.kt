@@ -7,7 +7,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.tinytongtong.androidstudy.R
-import com.tinytongtong.androidstudy.aidl.IlargeBitmapCallback
+import com.tinytongtong.androidstudy.aidl.ILargeBitmapCallback
+import com.tinytongtong.androidstudy.aidl.ILargeBitmapListCallback
 import kotlinx.android.synthetic.main.activity_transaction_too_large_exception.*
 
 /**
@@ -40,12 +41,31 @@ class TransactionTooLargeExceptionActivity : AppCompatActivity() {
         btnLargeBitmapByBinder.setOnClickListener {
             val i = Intent(this, TransactionTooLargeExceptionResultActivity::class.java)
             val bundle = Bundle()
-            bundle.putBinder("bitmap-binder", object : IlargeBitmapCallback.Stub() {
+            bundle.putBinder("bitmap-binder", object : ILargeBitmapCallback.Stub() {
                 override fun getBitmap(): Bitmap {
                     return bitmap
                 }
             })
             Log.e(TAG, "bitmap.allocationByteCount:" + bitmap.allocationByteCount)
+            i.putExtras(bundle)
+            startActivity(i)
+        }
+
+        // 跨进程传递列表的Bitmap，是可以的
+        btnLargeListBitmapByBinder.setOnClickListener {
+            val bmpList = mutableListOf<Bitmap>()
+            for (x in 0 until 2) {
+                val bmp = BitmapFactory.decodeResource(resources, R.drawable.large_image)
+                bmpList.add(bmp)
+            }
+            val i = Intent(this, TransactLargeListBitmapActivity::class.java)
+            val bundle = Bundle()
+            bundle.putBinder("bitmap-list-binder", object : ILargeBitmapListCallback.Stub() {
+                override fun getBitmapList(): MutableList<Bitmap> {
+                    return bmpList
+                }
+
+            })
             i.putExtras(bundle)
             startActivity(i)
         }
