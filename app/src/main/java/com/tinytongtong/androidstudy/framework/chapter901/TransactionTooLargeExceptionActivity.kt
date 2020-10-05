@@ -8,6 +8,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.tinytongtong.androidstudy.R
 import com.tinytongtong.androidstudy.aidl.*
+import com.tinytongtong.androidstudy.framework.chapter901.memoryfile.MemoryFileActivity
 import kotlinx.android.synthetic.main.activity_transaction_too_large_exception.*
 
 /**
@@ -88,6 +89,11 @@ class TransactionTooLargeExceptionActivity : AppCompatActivity() {
             i.putExtras(bundle)
             // Caused by: android.os.TransactionTooLargeException: data parcel size 1680092 bytes
 //            i.putParcelableArrayListExtra("xxx",dataList)
+            startActivity(i)
+        }
+
+        btnLargeListByMemoryFile.setOnClickListener {
+            val i = Intent(this, MemoryFileActivity::class.java)
             startActivity(i)
         }
     }

@@ -13,6 +13,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <service
+            android:name=".framework.chapter901.memoryfile.MemoryFileService"
+            android:enabled="true"
+            android:exported="true"
+            android:process="com.tinytongtong.memoryfile" />
+
+        <activity
+            android:name=".framework.chapter901.memoryfile.MemoryFileActivity"
+            android:label="MemoryFile示例" />
         <activity
             android:name=".framework.chapter901.TransactLargeListDataActivity"
             android:label="通过Binder传递大量列表数据" />
