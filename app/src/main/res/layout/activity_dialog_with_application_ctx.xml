@@ -4,6 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".dialog.DialogWithApplicationCtxActivity">
+    tools:context=".dialog.DialogWithVariousCtxActivity">
+
+    <Button
+        android:id="@+id/btnDialogActivityCtx"
+        style="@style/btn_style_lower"
+        android:text="启动Dialog-Activity"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnDialogAppCtx"
+        style="@style/btn_style_lower"
+        android:text="启动Dialog-Application"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnDialogActivityCtx" />
+
+    <Button
+        android:id="@+id/btnDialogServiceCtx"
+        style="@style/btn_style_lower"
+        android:text="启动Dialog-Service"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnDialogAppCtx" />
+
+    <Button
+        android:id="@+id/btnDialogBroadcastReceiverCtx"
+        style="@style/btn_style_lower"
+        android:text="启动Dialog-动态BroadcastReceiver"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnDialogServiceCtx" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

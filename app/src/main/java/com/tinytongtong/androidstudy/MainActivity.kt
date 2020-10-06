@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.tinytongtong.androidstudy.aidl.BinderTestActivity
 import com.tinytongtong.androidstudy.anim.ActivityAnimActivity
 import com.tinytongtong.androidstudy.bitmap.BitmapEntryActivity
+import com.tinytongtong.androidstudy.dialog.DialogWithVariousCtxActivity
 import com.tinytongtong.androidstudy.draw.CustomViewGroupActivity
 import com.tinytongtong.androidstudy.framework.chapter901.TransactionTooLargeExceptionActivity
 import com.tinytongtong.androidstudy.jsonparse.JsonParseTestActivity
@@ -45,6 +46,10 @@ class MainActivity : AppCompatActivity() {
 
         btnTransactionTooLargeException.setOnClickListener {
             startActivity(Intent(this, TransactionTooLargeExceptionActivity::class.java))
+        }
+
+        btnDialog.setOnClickListener {
+            startActivity(Intent(this, DialogWithVariousCtxActivity::class.java))
         }
     }
 }

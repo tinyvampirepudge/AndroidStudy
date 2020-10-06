@@ -14,6 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <service
+            android:name=".dialog.DialogService"
+            android:enabled="true"
+            android:exported="true"></service>
+        <service
             android:name=".framework.chapter901.memoryfile.MemoryFileService"
             android:enabled="true"
             android:exported="true"
@@ -28,7 +32,7 @@
         <activity android:name=".framework.chapter901.TransactLargeListBitmapActivity" />
         <activity android:name=".framework.chapter901.TransactionTooLargeExceptionResultActivity" />
         <activity android:name=".framework.chapter901.TransactionTooLargeExceptionActivity" />
-        <activity android:name=".dialog.DialogWithApplicationCtxActivity" />
+        <activity android:name=".dialog.DialogWithVariousCtxActivity" />
         <activity android:name=".jsonparse.JsonParseTestActivity" />
         <activity android:name=".aidl.BinderTestActivity" />
         <activity android:name=".validateui.ValidateUiInSubThreadActivity" />
