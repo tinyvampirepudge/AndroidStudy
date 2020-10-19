@@ -18,8 +18,12 @@ import kotlinx.android.synthetic.main.activity_dialog_with_application_ctx.*
  * @Version
  */
 class DialogWithVariousCtxActivity : AppCompatActivity() {
+    companion object{
+        const val TAG = "DialogWithVarious"
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.e(TAG,"onCreate")
         setContentView(R.layout.activity_dialog_with_application_ctx)
         btnDialogActivityCtx.setOnClickListener {
             val dialog = AlertDialog.Builder(DialogWithVariousCtxActivity@ this)
@@ -100,4 +104,15 @@ class DialogWithVariousCtxActivity : AppCompatActivity() {
             sendBroadcast(i)
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        Log.e(TAG,"onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.e(TAG,"onPause")
+    }
+
 }
