@@ -8,6 +8,7 @@ import com.tinytongtong.androidstudy.anim.ActivityAnimActivity
 import com.tinytongtong.androidstudy.bitmap.BitmapEntryActivity
 import com.tinytongtong.androidstudy.dialog.DialogWithVariousCtxActivity
 import com.tinytongtong.androidstudy.draw.CustomViewGroupActivity
+import com.tinytongtong.androidstudy.drawflow.ViewFlowActivity
 import com.tinytongtong.androidstudy.framework.chapter901.TransactionTooLargeExceptionActivity
 import com.tinytongtong.androidstudy.jsonparse.JsonParseTestActivity
 import com.tinytongtong.androidstudy.validateui.ValidateUiInSubThreadActivity
@@ -50,6 +51,10 @@ class MainActivity : AppCompatActivity() {
 
         btnDialog.setOnClickListener {
             startActivity(Intent(this, DialogWithVariousCtxActivity::class.java))
+        }
+
+        btnViewFlow.setOnClickListener {
+            startActivity(Intent(this, ViewFlowActivity::class.java))
         }
     }
 }
