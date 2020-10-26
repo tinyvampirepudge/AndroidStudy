@@ -21,5 +21,9 @@ class ViewFlowActivity : AppCompatActivity() {
         btn1.setOnClickListener {
             startActivity(Intent(this, ChildViewWrapActivity::class.java))
         }
+
+        btn2.setOnClickListener {
+            startActivity(Intent(this, MultipleOnMeasureActivity::class.java))
+        }
     }
 }
