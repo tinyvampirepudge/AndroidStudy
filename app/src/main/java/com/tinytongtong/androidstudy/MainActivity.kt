@@ -3,6 +3,7 @@ package com.tinytongtong.androidstudy
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.tinytongtong.androidstudy.activity.lifecycle.ActivityLifecycleActivity
 import com.tinytongtong.androidstudy.aidl.BinderTestActivity
 import com.tinytongtong.androidstudy.anim.ActivityAnimActivity
 import com.tinytongtong.androidstudy.bitmap.BitmapEntryActivity
@@ -55,6 +56,10 @@ class MainActivity : AppCompatActivity() {
 
         btnViewFlow.setOnClickListener {
             startActivity(Intent(this, ViewFlowActivity::class.java))
+        }
+
+        btnActLifecycle.setOnClickListener {
+            startActivity(Intent(this, ActivityLifecycleActivity::class.java))
         }
     }
 }

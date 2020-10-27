@@ -13,7 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".drawflow.MultipleOnMeasureActivity"></activity>
+        <activity android:name=".activity.lifecycle.LifecycleBActivity"></activity>
+        <activity android:name=".activity.lifecycle.LifecycleAActivity" />
+        <activity android:name=".activity.lifecycle.ActivityLifecycleActivity" />
+        <activity android:name=".drawflow.MultipleOnMeasureActivity" />
         <activity android:name=".drawflow.ChildViewWrapActivity" />
         <activity android:name=".drawflow.ViewFlowActivity" />
         <activity android:name=".okhttp.OkHttpActivity" />
