@@ -12,6 +12,7 @@ import com.tinytongtong.androidstudy.draw.CustomViewGroupActivity
 import com.tinytongtong.androidstudy.drawflow.ViewFlowActivity
 import com.tinytongtong.androidstudy.framework.chapter901.TransactionTooLargeExceptionActivity
 import com.tinytongtong.androidstudy.jsonparse.JsonParseTestActivity
+import com.tinytongtong.androidstudy.textview.TextViewTestActivity
 import com.tinytongtong.androidstudy.validateui.ValidateUiInSubThreadActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -60,6 +61,10 @@ class MainActivity : AppCompatActivity() {
 
         btnActLifecycle.setOnClickListener {
             startActivity(Intent(this, ActivityLifecycleActivity::class.java))
+        }
+
+        btnTextViewTest.setOnClickListener {
+            startActivity(Intent(this, TextViewTestActivity::class.java))
         }
     }
 }
