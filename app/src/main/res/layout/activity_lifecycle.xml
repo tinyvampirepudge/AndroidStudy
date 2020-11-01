@@ -18,12 +18,20 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/btn"
+            android:id="@+id/btnConfigChanged"
             style="@style/btn_style_lower"
-            android:text="——"
+            android:text="屏幕旋转导致生命周期变化"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btnAStartB" />
+
+        <Button
+            android:id="@+id/btnAbnormalExit"
+            style="@style/btn_style_lower"
+            android:text="Activity异常退出的生命周期"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnConfigChanged" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

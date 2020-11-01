@@ -21,5 +21,11 @@ class ActivityLifecycleActivity : AppCompatActivity() {
         btnAStartB.setOnClickListener {
             startActivity(Intent(this, LifecycleAActivity::class.java))
         }
+        btnConfigChanged.setOnClickListener {
+            startActivity(Intent(this, ConfigChangedActivity::class.java))
+        }
+        btnAbnormalExit.setOnClickListener {
+            startActivity(Intent(this, AbnormalExitActivity::class.java))
+        }
     }
 }

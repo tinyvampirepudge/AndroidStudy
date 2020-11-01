@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".textview.TextViewTestActivity"></activity>
+        <activity android:name=".activity.lifecycle.AbnormalExitActivity"></activity>
+        <activity android:name=".activity.lifecycle.ConfigChangedActivity" />
+        <activity android:name=".textview.TextViewTestActivity" />
         <activity android:name=".activity.lifecycle.LifecycleBActivity" />
         <activity android:name=".activity.lifecycle.LifecycleAActivity" />
         <activity android:name=".activity.lifecycle.ActivityLifecycleActivity" />
