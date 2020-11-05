@@ -15,6 +15,7 @@ import com.tinytongtong.androidstudy.dialog.DialogWithVariousCtxActivity
 import com.tinytongtong.androidstudy.draw.CustomViewGroupActivity
 import com.tinytongtong.androidstudy.drawflow.ViewFlowActivity
 import com.tinytongtong.androidstudy.framework.chapter901.TransactionTooLargeExceptionActivity
+import com.tinytongtong.androidstudy.handler.HandlerTestActivity
 import com.tinytongtong.androidstudy.jsonparse.JsonParseTestActivity
 import com.tinytongtong.androidstudy.screenadapt.ScreenAdaptActivity
 import com.tinytongtong.androidstudy.textview.TextViewTestActivity
@@ -82,6 +83,10 @@ class MainActivity : AppCompatActivity() {
 
         btnScreenAdapt.setOnClickListener {
             startActivity(Intent(this, ScreenAdaptActivity::class.java))
+        }
+
+        btnHandlerTest.setOnClickListener {
+            startActivity(Intent(this, HandlerTestActivity::class.java))
         }
     }
 }

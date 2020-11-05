@@ -106,6 +106,14 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btnTextViewTest" />
 
+        <Button
+            android:id="@+id/btnHandlerTest"
+            style="@style/btn_style_lower"
+            android:text="HandlerTest"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnScreenAdapt" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>
