@@ -2,7 +2,11 @@ package com.tinytongtong.androidstudy
 
 import android.content.Intent
 import android.os.Bundle
+import android.webkit.WebView
 import androidx.appcompat.app.AppCompatActivity
+import com.github.lzyzsd.jsbridge.BridgeHandler
+import com.github.lzyzsd.jsbridge.BridgeWebView
+import com.github.lzyzsd.jsbridge.CallBackFunction
 import com.tinytongtong.androidstudy.activity.lifecycle.ActivityLifecycleActivity
 import com.tinytongtong.androidstudy.aidl.BinderTestActivity
 import com.tinytongtong.androidstudy.anim.ActivityAnimActivity
@@ -12,6 +16,7 @@ import com.tinytongtong.androidstudy.draw.CustomViewGroupActivity
 import com.tinytongtong.androidstudy.drawflow.ViewFlowActivity
 import com.tinytongtong.androidstudy.framework.chapter901.TransactionTooLargeExceptionActivity
 import com.tinytongtong.androidstudy.jsonparse.JsonParseTestActivity
+import com.tinytongtong.androidstudy.screenadapt.ScreenAdaptActivity
 import com.tinytongtong.androidstudy.textview.TextViewTestActivity
 import com.tinytongtong.androidstudy.validateui.ValidateUiInSubThreadActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -65,6 +70,18 @@ class MainActivity : AppCompatActivity() {
 
         btnTextViewTest.setOnClickListener {
             startActivity(Intent(this, TextViewTestActivity::class.java))
+        }
+
+        // BridgeWebView源码查看
+        val wv: BridgeWebView = BridgeWebView(this)
+        wv.setDefaultHandler(object : BridgeHandler {
+            override fun handler(data: String?, function: CallBackFunction?) {
+                TODO("Not yet implemented")
+            }
+        })
+
+        btnScreenAdapt.setOnClickListener {
+            startActivity(Intent(this, ScreenAdaptActivity::class.java))
         }
     }
 }
