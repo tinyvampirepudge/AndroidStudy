@@ -2,7 +2,6 @@ package com.tinytongtong.androidstudy
 
 import android.content.Intent
 import android.os.Bundle
-import android.webkit.WebView
 import androidx.appcompat.app.AppCompatActivity
 import com.github.lzyzsd.jsbridge.BridgeHandler
 import com.github.lzyzsd.jsbridge.BridgeWebView
@@ -18,6 +17,7 @@ import com.tinytongtong.androidstudy.framework.chapter901.TransactionTooLargeExc
 import com.tinytongtong.androidstudy.glide.GlideTestActivity
 import com.tinytongtong.androidstudy.handler.HandlerTestActivity
 import com.tinytongtong.androidstudy.jsonparse.JsonParseTestActivity
+import com.tinytongtong.androidstudy.rxjava.RxJavaActivity
 import com.tinytongtong.androidstudy.screenadapt.ScreenAdaptActivity
 import com.tinytongtong.androidstudy.textview.TextViewTestActivity
 import com.tinytongtong.androidstudy.validateui.ValidateUiInSubThreadActivity
@@ -92,6 +92,10 @@ class MainActivity : AppCompatActivity() {
 
         btnGlideStudy.setOnClickListener {
             startActivity(Intent(this, GlideTestActivity::class.java))
+        }
+
+        btnRxJavaTest.setOnClickListener {
+            startActivity(Intent(this, RxJavaActivity::class.java))
         }
     }
 }
