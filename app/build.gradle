@@ -81,6 +81,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+
     // 超大图加载
     implementation 'com.davemorrissey.labs:subsampling-scale-image-view-androidx:3.10.0'
 

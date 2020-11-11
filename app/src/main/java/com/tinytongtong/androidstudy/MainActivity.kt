@@ -19,6 +19,7 @@ import com.tinytongtong.androidstudy.handler.HandlerTestActivity
 import com.tinytongtong.androidstudy.jsonparse.JsonParseTestActivity
 import com.tinytongtong.androidstudy.rxjava.RxJavaActivity
 import com.tinytongtong.androidstudy.screenadapt.ScreenAdaptActivity
+import com.tinytongtong.androidstudy.templates.adaptertemplate.TemplatesTestActivity
 import com.tinytongtong.androidstudy.textview.TextViewTestActivity
 import com.tinytongtong.androidstudy.validateui.ValidateUiInSubThreadActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -96,6 +97,10 @@ class MainActivity : AppCompatActivity() {
 
         btnRxJavaTest.setOnClickListener {
             startActivity(Intent(this, RxJavaActivity::class.java))
+        }
+
+        btnTemplateTest.setOnClickListener {
+            startActivity(Intent(this, TemplatesTestActivity::class.java))
         }
     }
 }
