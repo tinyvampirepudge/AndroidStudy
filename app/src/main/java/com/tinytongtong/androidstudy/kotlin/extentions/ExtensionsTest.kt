@@ -2,6 +2,7 @@ package com.tinytongtong.androidstudy.kotlin.extentions
 
 /**
  * @Description: 扩展函数
+ * https://www.kotlincn.net/docs/reference/extensions.html
  *
  * @Author tinytongtong
  * @Date 2020/11/11 4:25 PM
