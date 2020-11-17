@@ -13,6 +13,7 @@ import com.tinytongtong.androidstudy.bitmap.BitmapEntryActivity
 import com.tinytongtong.androidstudy.dialog.DialogWithVariousCtxActivity
 import com.tinytongtong.androidstudy.draw.CustomViewGroupActivity
 import com.tinytongtong.androidstudy.drawflow.ViewFlowActivity
+import com.tinytongtong.androidstudy.eventbus.EventBusActivity
 import com.tinytongtong.androidstudy.framework.chapter901.TransactionTooLargeExceptionActivity
 import com.tinytongtong.androidstudy.glide.GlideTestActivity
 import com.tinytongtong.androidstudy.handler.HandlerTestActivity
@@ -101,6 +102,10 @@ class MainActivity : AppCompatActivity() {
 
         btnTemplateTest.setOnClickListener {
             startActivity(Intent(this, TemplatesTestActivity::class.java))
+        }
+
+        btnEventBusTest.setOnClickListener {
+            startActivity(Intent(this, EventBusActivity::class.java))
         }
     }
 }

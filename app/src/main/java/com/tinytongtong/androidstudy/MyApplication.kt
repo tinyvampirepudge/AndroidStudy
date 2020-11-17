@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import androidx.multidex.MultiDex
 import com.didichuxing.doraemonkit.DoraemonKit
+import com.tencent.mmkv.MMKV
 
 /**
  * @Description:
@@ -13,7 +14,7 @@ import com.didichuxing.doraemonkit.DoraemonKit
  * @Version
  */
 class MyApplication : Application() {
-    companion object{
+    companion object {
         var instance: Application? = null
     }
 
@@ -27,5 +28,9 @@ class MyApplication : Application() {
         super.onCreate()
         instance = this
         DoraemonKit.install(this, "c7e58cce7b259d5c8b8bdeec039b9e34")
+
+        // mmkv
+        val rootDir = MMKV.initialize(this)
+        println("mmkv rootDir：" + rootDir)
     }
 }

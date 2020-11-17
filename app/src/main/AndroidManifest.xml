@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".templates.adaptertemplate.TemplatesTestActivity"></activity>
+        <activity android:name=".eventbus.EventBusActivity"></activity>
+        <activity android:name=".templates.adaptertemplate.TemplatesTestActivity" />
         <activity android:name=".rxjava.RxJavaActivity" />
         <activity android:name=".glide.GlideTestActivity" />
         <activity android:name=".sharedpreferences.SharedPreferenceTestActivity" />
