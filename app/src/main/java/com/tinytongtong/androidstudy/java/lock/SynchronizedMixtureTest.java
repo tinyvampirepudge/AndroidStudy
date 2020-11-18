@@ -83,7 +83,7 @@ public class SynchronizedMixtureTest {
             @Override
             public void run() {
                 while (count < 20) {
-                    method1();
+                    st.method1();
                     count++;
                 }
             }
