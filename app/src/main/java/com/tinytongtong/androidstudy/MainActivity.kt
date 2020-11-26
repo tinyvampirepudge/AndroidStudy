@@ -23,6 +23,7 @@ import com.tinytongtong.androidstudy.screenadapt.ScreenAdaptActivity
 import com.tinytongtong.androidstudy.templates.adaptertemplate.TemplatesTestActivity
 import com.tinytongtong.androidstudy.textview.TextViewTestActivity
 import com.tinytongtong.androidstudy.validateui.ValidateUiInSubThreadActivity
+import com.tinytongtong.mylibrary.MyLibraryActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -106,6 +107,10 @@ class MainActivity : AppCompatActivity() {
 
         btnEventBusTest.setOnClickListener {
             startActivity(Intent(this, EventBusActivity::class.java))
+        }
+
+        btnMyLibraryTest.setOnClickListener {
+            startActivity(Intent(this, MyLibraryActivity::class.java))
         }
     }
 }

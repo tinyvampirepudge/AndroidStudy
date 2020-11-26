@@ -5,4 +5,5 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="font_assist_1">#999999</color>
     <color name="txt_red_f2233b">#f2233b</color>
+    <color name="color_override">#f2233b</color>
 </resources>

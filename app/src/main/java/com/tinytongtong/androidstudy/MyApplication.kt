@@ -22,12 +22,14 @@ class MyApplication : Application() {
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
         MultiDex.install(this)
-        LeakCanary.install(this)
     }
 
     override fun onCreate() {
         super.onCreate()
         instance = this
+
+        LeakCanary.install(this)
+
         DoraemonKit.install(this, "c7e58cce7b259d5c8b8bdeec039b9e34")
 
         // mmkv

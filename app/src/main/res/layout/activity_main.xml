@@ -146,6 +146,14 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btnTemplateTest" />
 
+        <Button
+            android:id="@+id/btnMyLibraryTest"
+            style="@style/btn_style_lower"
+            android:text="模块间res覆盖 Test"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnEventBusTest" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>
