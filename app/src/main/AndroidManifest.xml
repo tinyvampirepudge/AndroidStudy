@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".retrofit.RetrofitActivity"></activity>
+        <activity android:name=".toast.ToastTestActivity"></activity>
+        <activity android:name=".retrofit.RetrofitActivity" />
         <activity android:name=".eventbus.EventBusActivity" />
         <activity android:name=".templates.adaptertemplate.TemplatesTestActivity" />
         <activity android:name=".rxjava.RxJavaActivity" />
