@@ -25,7 +25,7 @@ import java.lang.reflect.Field;
  * ——通过反射获取Toast#TN中的Handler对象，hook住Handler#dispatchMessage方法。toast的展示、隐藏和取消
  * 都是通过给Handler发送消息来实现的。
  * ——将过期的Toast从List中清除。
- * @Author wangjianzhou@didichuxing.com
+ * @Author tinytongtong
  * @Date 2021/1/12 11:37 AM
  */
 public class ToastHelper {
