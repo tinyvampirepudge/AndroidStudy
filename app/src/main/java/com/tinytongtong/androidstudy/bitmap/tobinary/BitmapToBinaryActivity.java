@@ -200,7 +200,10 @@ public class BitmapToBinaryActivity extends AppCompatActivity {
      */
     public Bitmap getBitmapFromByte(byte[] temp) {
         if (temp != null) {
-            Bitmap bitmap = BitmapFactory.decodeByteArray(temp, 0, temp.length);
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            // Bitmap.Config.ARGB_4444设置无效，跟Bitmap.Config.ARGB_8888一样的效果
+            options.inPreferredConfig = Bitmap.Config.ARGB_4444;
+            Bitmap bitmap = BitmapFactory.decodeByteArray(temp, 0, temp.length, options);
             return bitmap;
         } else {
             return null;
