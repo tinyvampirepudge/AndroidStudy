@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".glide.GlideTestActivity">
+    tools:context=".glide.GlideV4Activity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -19,21 +19,21 @@
             android:textAllCaps="false"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/iv"
+        <RelativeLayout
+            android:id="@+id/rl_img_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/btnLoad" />
+            app:layout_constraintTop_toBottomOf="@+id/btnLoad">
 
-        <Button
-            android:id="@+id/btnGlideV4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="glide v4"
-            android:textAllCaps="false"
-            app:layout_constraintTop_toBottomOf="@id/iv" />
+            <ImageView
+                android:id="@+id/iv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.core.widget.NestedScrollView>

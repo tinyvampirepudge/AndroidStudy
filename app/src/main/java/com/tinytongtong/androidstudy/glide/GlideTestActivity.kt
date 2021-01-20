@@ -1,5 +1,6 @@
 package com.tinytongtong.androidstudy.glide
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
@@ -24,6 +25,10 @@ class GlideTestActivity : AppCompatActivity() {
                 .with(this)
                 .load(url)
                 .into(iv)
+        }
+
+        btnGlideV4.setOnClickListener{
+            startActivity(Intent(this, GlideV4Activity::class.java))
         }
     }
 }
