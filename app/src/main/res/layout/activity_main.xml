@@ -162,6 +162,15 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btnMyLibraryTest" />
 
+        <Button
+            android:id="@+id/btnViewPagerTest"
+            style="@style/btn_style_lower"
+            android:text="ViewPager测试"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnToastTest" />
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

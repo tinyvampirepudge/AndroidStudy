@@ -1,5 +1,7 @@
 package com.tinytongtong.androidstudy.toast;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +17,11 @@ import com.tinytongtong.androidstudy.R;
 public class ToastTestActivity extends AppCompatActivity {
 
     private int index;
+
+    public static void actionStart(Context context) {
+        Intent starter = new Intent(context, ToastTestActivity.class);
+        context.startActivity(starter);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
