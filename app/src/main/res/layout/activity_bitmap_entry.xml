@@ -38,6 +38,13 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btnBitmapType" />
 
+        <Button
+            android:id="@+id/btnBitmapToBinary"
+            style="@style/btn_style_lower"
+            android:text="Bitmap转换成二进制数据"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnBitmapCompress" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>

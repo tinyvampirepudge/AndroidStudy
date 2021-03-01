@@ -22,7 +22,9 @@ import com.tinytongtong.androidstudy.rxjava.RxJavaActivity
 import com.tinytongtong.androidstudy.screenadapt.ScreenAdaptActivity
 import com.tinytongtong.androidstudy.templates.adaptertemplate.TemplatesTestActivity
 import com.tinytongtong.androidstudy.textview.TextViewTestActivity
+import com.tinytongtong.androidstudy.toast.ToastTestActivity
 import com.tinytongtong.androidstudy.validateui.ValidateUiInSubThreadActivity
+import com.tinytongtong.androidstudy.viewpager.ViewPagerEntryActivity
 import com.tinytongtong.mylibrary.MyLibraryActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -111,6 +113,14 @@ class MainActivity : AppCompatActivity() {
 
         btnMyLibraryTest.setOnClickListener {
             startActivity(Intent(this, MyLibraryActivity::class.java))
+        }
+
+        btnToastTest.setOnClickListener {
+            startActivity(Intent(this, ToastTestActivity::class.java))
+        }
+
+        btnViewPagerTest.setOnClickListener {
+            ViewPagerEntryActivity.actionStart(this)
         }
     }
 }
