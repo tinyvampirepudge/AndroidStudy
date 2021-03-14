@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".viewpager.ViewPager2FragmentPagerAdapterActivity"></activity>
+        <activity android:name=".recyclerview.AdapterOnCreateViewHolderTestActivity"></activity>
+        <activity android:name=".recyclerview.RecyclerViewEntryActivity" />
+        <activity android:name=".viewpager.ViewPager2FragmentPagerAdapterActivity" />
         <activity android:name=".viewpager.ViewPagerFragmentPagerAdapterActivity" />
         <activity android:name=".viewpager.ViewPagerEntryActivity" />
         <activity android:name=".glide.GlideV4Activity" />

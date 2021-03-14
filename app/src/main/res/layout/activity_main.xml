@@ -170,7 +170,13 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btnToastTest" />
 
-
+        <Button
+            android:id="@+id/btnRecyclerViewTest"
+            style="@style/btn_style_lower"
+            android:text="RecyclerView测试"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnViewPagerTest" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

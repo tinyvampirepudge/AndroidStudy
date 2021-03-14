@@ -18,6 +18,7 @@ import com.tinytongtong.androidstudy.framework.chapter901.TransactionTooLargeExc
 import com.tinytongtong.androidstudy.glide.GlideTestActivity
 import com.tinytongtong.androidstudy.handler.HandlerTestActivity
 import com.tinytongtong.androidstudy.jsonparse.JsonParseTestActivity
+import com.tinytongtong.androidstudy.recyclerview.RecyclerViewEntryActivity
 import com.tinytongtong.androidstudy.rxjava.RxJavaActivity
 import com.tinytongtong.androidstudy.screenadapt.ScreenAdaptActivity
 import com.tinytongtong.androidstudy.templates.adaptertemplate.TemplatesTestActivity
@@ -121,6 +122,10 @@ class MainActivity : AppCompatActivity() {
 
         btnViewPagerTest.setOnClickListener {
             ViewPagerEntryActivity.actionStart(this)
+        }
+
+        btnRecyclerViewTest.setOnClickListener {
+            RecyclerViewEntryActivity.actionStart(this)
         }
     }
 }
