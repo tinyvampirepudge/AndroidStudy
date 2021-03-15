@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shareInterpolator="false">
+
+    <scale
+        android:duration="200"
+        android:fromXScale="1.0"
+        android:fromYScale="1.0"
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:repeatCount="@integer/breath_anim_repeat_count"
+        android:toXScale="0.9"
+        android:toYScale="0.9" />
+
+    <!--  fromXScale和fromYScale必须使用1.0，不然会影响动画的初试状态。所以这里需要动态转换下toXScale和toYScale的比例  -->
+
+    <!--  1.1 / 0.9 = 1.2222222222222223  -->
+    <scale
+        android:duration="400"
+        android:fromXScale="1.0"
+        android:fromYScale="1.0"
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:repeatCount="@integer/breath_anim_repeat_count"
+        android:startOffset="200"
+        android:toXScale="1.2222222222222223"
+        android:toYScale="1.2222222222222223" />
+
+    <!--  0.9 / 1.1 = 0.8181818181818181  -->
+    <scale
+        android:duration="400"
+        android:fromXScale="1.0"
+        android:fromYScale="1.0"
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:repeatCount="@integer/breath_anim_repeat_count"
+        android:startOffset="600"
+        android:toXScale="0.8181818181818181"
+        android:toYScale="0.8181818181818181" />
+
+    <!--  1.0 / 0.9 = 1.1111111111111112  -->
+    <scale
+        android:duration="200"
+        android:fromXScale="1.0"
+        android:fromYScale="1.0"
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:repeatCount="@integer/breath_anim_repeat_count"
+        android:startOffset="1000"
+        android:toXScale="1.1111111111111112"
+        android:toYScale="1.1111111111111112" />
+
+</set>

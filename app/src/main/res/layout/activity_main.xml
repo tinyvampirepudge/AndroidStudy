@@ -178,6 +178,14 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btnViewPagerTest" />
 
+        <Button
+            android:id="@+id/btn_breath_anim"
+            style="@style/btn_style_lower"
+            android:text="呼吸动画"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnRecyclerViewTest" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>

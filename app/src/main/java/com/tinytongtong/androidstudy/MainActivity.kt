@@ -9,6 +9,7 @@ import com.github.lzyzsd.jsbridge.CallBackFunction
 import com.tinytongtong.androidstudy.activity.lifecycle.ActivityLifecycleActivity
 import com.tinytongtong.androidstudy.aidl.BinderTestActivity
 import com.tinytongtong.androidstudy.anim.ActivityAnimActivity
+import com.tinytongtong.androidstudy.anim.breath.BreathAnimActivity
 import com.tinytongtong.androidstudy.bitmap.BitmapEntryActivity
 import com.tinytongtong.androidstudy.dialog.DialogWithVariousCtxActivity
 import com.tinytongtong.androidstudy.draw.CustomViewGroupActivity
@@ -126,6 +127,11 @@ class MainActivity : AppCompatActivity() {
 
         btnRecyclerViewTest.setOnClickListener {
             RecyclerViewEntryActivity.actionStart(this)
+        }
+
+        // 呼吸动画
+        btn_breath_anim.setOnClickListener {
+            startActivity(Intent(this, BreathAnimActivity::class.java))
         }
     }
 }
