@@ -10,13 +10,6 @@ import android.view.animation.AnimationUtils;
 
 import androidx.annotation.AnimRes;
 
-
-/**
- * @Description: View动画帮助类
- * @Author wangjianzhou@didichuxing.com
- * @Date 3/11/21 5:04 PM
- */
-
 /**
  * @Description: View动画帮助类
  * @Author tinytongtong
