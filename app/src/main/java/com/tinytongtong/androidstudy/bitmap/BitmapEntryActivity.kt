@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import com.tinytongtong.androidstudy.R
 import com.tinytongtong.androidstudy.bitmap.compress.BitmapCompressActivity
+import com.tinytongtong.androidstudy.bitmap.crop.BitmapCropActivity
 import com.tinytongtong.androidstudy.bitmap.large.SubsamplingScaleImageViewActivity
 import com.tinytongtong.androidstudy.bitmap.options.BitmapFactoryOptionsActivity
 import com.tinytongtong.androidstudy.bitmap.tobinary.BitmapToBinaryActivity
@@ -47,6 +48,10 @@ class BitmapEntryActivity : AppCompatActivity() {
 
         btnBitmapToBinary.setOnClickListener {
             startActivity(Intent(this, BitmapToBinaryActivity::class.java))
+        }
+
+        btnBitmapGlideCrop.setOnClickListener {
+            BitmapCropActivity.actionStart(this)
         }
     }
 }

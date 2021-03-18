@@ -45,6 +45,13 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btnBitmapCompress" />
 
+        <Button
+            android:id="@+id/btnBitmapGlideCrop"
+            style="@style/btn_style_lower"
+            android:text="Bitmap通过Glide裁剪，从下往上"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnBitmapToBinary" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>
