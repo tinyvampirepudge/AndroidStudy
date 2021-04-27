@@ -35,6 +35,8 @@ public class StringUtils {
          *      —— 曾用名全部数据为空或null
          */
         System.out.println(String.format("拼接结果: %s", result));
+
+        System.out.println("拼接结果313123123: " + null);
     }
 
     private static String appendAliasAndOldName(String name, List<String> aliasName, List<String> oldName) {

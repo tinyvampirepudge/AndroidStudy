@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
 import com.tinytongtong.androidstudy.R;
 
@@ -47,31 +48,31 @@ public class GlideV4Activity extends AppCompatActivity {
     private void loadImage() {
         //4.9.0：使用into(target)时GONE不会走回调，INVISIBLE会走
         // 使用submit时会走回调。
-        iv.setVisibility(View.GONE);
-//        iv.setVisibility(View.INVISIBLE);
-        Glide.with(getContext())
-                .load(R.drawable.wallpure)
-                .error(R.drawable.maomi)
-                .listener(new RequestListener<Drawable>() {
-                    @Override
-                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                        Log.e(TAG, "RequestListener#onLoadFailed");
-                        return false;
-                    }
-
-                    @Override
-                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                        Log.e(TAG, "RequestListener#onResourceReady");
-                        runOnUiThread(() -> {
-                            iv.setVisibility(View.VISIBLE);
-                            iv.setImageDrawable(resource);
-                        });
-                        return false;
-                    }
-
-                })
-//                .into(iv);
-                .submit();
+//        iv.setVisibility(View.GONE);
+////        iv.setVisibility(View.INVISIBLE);
+//        Glide.with(getContext())
+//                .load(R.drawable.wallpure)
+//                .error(R.drawable.maomi)
+//                .listener(new RequestListener<Drawable>() {
+//                    @Override
+//                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+//                        Log.e(TAG, "RequestListener#onLoadFailed");
+//                        return false;
+//                    }
+//
+//                    @Override
+//                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+//                        Log.e(TAG, "RequestListener#onResourceReady");
+//                        runOnUiThread(() -> {
+//                            iv.setVisibility(View.VISIBLE);
+//                            iv.setImageDrawable(resource);
+//                        });
+//                        return false;
+//                    }
+//
+//                })
+////                .into(iv);
+//                .submit();
 
         //3.7.0：GONE不会走回调，INVISIBLE会走
 //        iv.setVisibility(View.GONE);
@@ -94,6 +95,16 @@ public class GlideV4Activity extends AppCompatActivity {
 //                    }
 //                })
 //                .into(iv);
+
+
+        /**
+         * 查看源码
+         */
+        RequestOptions options = new RequestOptions();
+        options.fitCenter();
+        Glide.with(getContext())
+                .load(R.drawable.wallpure)
+                .into(iv);
     }
 
     private Context getContext() {
