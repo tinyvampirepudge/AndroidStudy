@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.tinytongtong.androidstudy.R
+import com.tinytongtong.androidstudy.activity.AActivity
 import kotlinx.android.synthetic.main.activity_lifecycle.*
 
 /**
@@ -26,6 +27,9 @@ class ActivityLifecycleActivity : AppCompatActivity() {
         }
         btnAbnormalExit.setOnClickListener {
             startActivity(Intent(this, AbnormalExitActivity::class.java))
+        }
+        btnStartActivityForResult.setOnClickListener {
+            startActivity(Intent(this, AActivity::class.java))
         }
     }
 }

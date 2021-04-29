@@ -33,6 +33,15 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btnConfigChanged" />
 
+
+        <Button
+            android:id="@+id/btnStartActivityForResult"
+            style="@style/btn_style_lower"
+            android:text="StartActivityForResult测试不调用setResult"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnAbnormalExit" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>
