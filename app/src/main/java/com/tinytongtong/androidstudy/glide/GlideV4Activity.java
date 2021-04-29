@@ -1,23 +1,18 @@
 package com.tinytongtong.androidstudy.glide;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.Target;
 import com.tinytongtong.androidstudy.R;
 
 
@@ -100,10 +95,15 @@ public class GlideV4Activity extends AppCompatActivity {
         /**
          * 查看源码
          */
-        RequestOptions options = new RequestOptions();
-        options.fitCenter();
+        RequestOptions options = new RequestOptions()
+                .fallback(new ColorDrawable(Color.CYAN))
+                .placeholder(new ColorDrawable(Color.GRAY))
+                .error(new ColorDrawable(Color.RED))
+                .skipMemoryCache(true)
+                .diskCacheStrategy(DiskCacheStrategy.NONE);
         Glide.with(getContext())
-                .load(R.drawable.wallpure)
+                .load("http://p1.pstatp.com/large/166200019850062839d3")
+                .apply(options)
                 .into(iv);
     }
 
