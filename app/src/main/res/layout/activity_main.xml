@@ -186,6 +186,14 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btnRecyclerViewTest" />
 
+        <Button
+            android:id="@+id/btn_component_callback"
+            style="@style/btn_style_lower"
+            android:text="添加ComponentCallbacks监听"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_breath_anim" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>

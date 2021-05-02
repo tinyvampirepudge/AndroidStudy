@@ -11,6 +11,7 @@ import com.tinytongtong.androidstudy.aidl.BinderTestActivity
 import com.tinytongtong.androidstudy.anim.ActivityAnimActivity
 import com.tinytongtong.androidstudy.anim.breath.BreathAnimActivity
 import com.tinytongtong.androidstudy.bitmap.BitmapEntryActivity
+import com.tinytongtong.androidstudy.componentcallbacks.ComponentCallbacksActivity
 import com.tinytongtong.androidstudy.dialog.DialogWithVariousCtxActivity
 import com.tinytongtong.androidstudy.draw.CustomViewGroupActivity
 import com.tinytongtong.androidstudy.drawflow.ViewFlowActivity
@@ -132,6 +133,11 @@ class MainActivity : AppCompatActivity() {
         // 呼吸动画
         btn_breath_anim.setOnClickListener {
             startActivity(Intent(this, BreathAnimActivity::class.java))
+        }
+
+        // 添加ComponentCallbacks监听
+        btn_component_callback.setOnClickListener {
+            startActivity(Intent(this, ComponentCallbacksActivity::class.java))
         }
     }
 }
