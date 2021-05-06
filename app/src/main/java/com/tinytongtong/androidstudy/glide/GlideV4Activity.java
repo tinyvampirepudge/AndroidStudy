@@ -28,6 +28,11 @@ public class GlideV4Activity extends AppCompatActivity {
     private RelativeLayout imgContainer;
     private ImageView iv;
 
+    // 静态图片资源
+    private static String URL = "https://i03piccdn.sogoucdn.com/fea552dd430408fa";
+    // Gif资源
+    private static String GIF_URL = "http://wx4.sinaimg.cn/mw690/006HJgYYgy1fsfx84unifg305k05k7ug.gif";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,7 +107,7 @@ public class GlideV4Activity extends AppCompatActivity {
                 .skipMemoryCache(true)
                 .diskCacheStrategy(DiskCacheStrategy.NONE);
         Glide.with(getContext())
-                .load("http://p1.pstatp.com/large/166200019850062839d3")
+                .load(URL)
                 .apply(options)
                 .into(iv);
     }
