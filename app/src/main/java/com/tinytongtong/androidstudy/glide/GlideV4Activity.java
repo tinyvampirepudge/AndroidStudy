@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -36,13 +37,39 @@ public class GlideV4Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.e(TAG, "onCreate");
         setContentView(R.layout.activity_glide_v4);
 
         Button btn = findViewById(R.id.btnLoad);
         imgContainer = findViewById(R.id.rl_img_container);
         iv = findViewById(R.id.iv);
 
+        iv.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Log.e(TAG, "我是延时消息");
+            }
+        }, 10000);
+
         btn.setOnClickListener(v -> loadImage());
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.e(TAG, "onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.e(TAG, "onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.e(TAG, "onDestroy");
     }
 
     private void loadImage() {
