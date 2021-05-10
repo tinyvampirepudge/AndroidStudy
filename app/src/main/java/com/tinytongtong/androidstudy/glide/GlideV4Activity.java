@@ -34,6 +34,7 @@ public class GlideV4Activity extends AppCompatActivity {
     // Gif资源
     private static String GIF_URL = "http://wx4.sinaimg.cn/mw690/006HJgYYgy1fsfx84unifg305k05k7ug.gif";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
