@@ -41,6 +41,8 @@ public class GlideV4Activity extends AppCompatActivity {
         Log.e(TAG, "onCreate");
         setContentView(R.layout.activity_glide_v4);
 
+        // 我是revert之后的提交
+
         Button btn = findViewById(R.id.btnLoad);
         imgContainer = findViewById(R.id.rl_img_container);
         iv = findViewById(R.id.iv);
