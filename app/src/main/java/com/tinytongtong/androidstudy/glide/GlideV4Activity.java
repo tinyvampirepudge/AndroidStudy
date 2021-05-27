@@ -9,12 +9,19 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.gif.GifDrawable;
 import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.tinytongtong.androidstudy.R;
+
+import org.jetbrains.annotations.NotNull;
 
 
 /**
@@ -135,16 +142,29 @@ public class GlideV4Activity extends AppCompatActivity {
         /**
          * 查看源码
          */
-        RequestOptions options = new RequestOptions()
-                .fallback(new ColorDrawable(Color.CYAN))
-                .placeholder(new ColorDrawable(Color.GRAY))
-                .error(new ColorDrawable(Color.RED))
-                .skipMemoryCache(true)
-                .diskCacheStrategy(DiskCacheStrategy.NONE);
+//        RequestOptions options = new RequestOptions()
+//                .fallback(new ColorDrawable(Color.CYAN))
+//                .placeholder(new ColorDrawable(Color.GRAY))
+//                .error(new ColorDrawable(Color.RED))
+//                .skipMemoryCache(true)
+//                .diskCacheStrategy(DiskCacheStrategy.NONE);
+//        Glide.with(getContext())
+//                .load(URL)
+//                .apply(options)
+//                .into(iv);
+
+
         Glide.with(getContext())
-                .load(URL)
-                .apply(options)
-                .into(iv);
+                .asGif()
+                .load(GIF_URL)
+                .into(new SimpleTarget<GifDrawable>() {
+                    @Override
+                    public void onResourceReady(@NonNull @NotNull GifDrawable resource, @Nullable @org.jetbrains.annotations.Nullable Transition<? super GifDrawable> transition) {
+                        Log.e(TAG, "onResourceReady");
+                        iv.setBackground(resource);
+                    }
+                });
+//                .into(iv);
     }
 
     private Context getContext() {
