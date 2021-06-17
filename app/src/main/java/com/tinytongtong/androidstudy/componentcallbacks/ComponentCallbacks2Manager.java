@@ -5,7 +5,7 @@ import android.content.Context;
 
 /**
  * @Description: 接收ComponentCallbacks2的回调
- * @Author wangjianzhou@didichuxing.com
+ * @Author tinytongtong
  * @Date 4/29/21 5:08 PM
  */
 public class ComponentCallbacks2Manager {
