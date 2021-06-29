@@ -1,5 +1,8 @@
 package com.tinytongtong.androidstudy.manager.dialoglevel.core;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+
 /**
  * @Description: IInfoBusDialogLevel的代理类，将单个对话框和优先级管理器连接起来
  * 链接{@link IDialogLevel}与{@link DialogLevelMng}
@@ -7,7 +10,6 @@ package com.tinytongtong.androidstudy.manager.dialoglevel.core;
  * @Date 2021/6/2 8:40 PM
  */
 public abstract class DialogLevelWrapper {
-    private DialogLevelMng mLevelMng;
 
     private IDialogLevel mLevel;
 
@@ -23,8 +25,9 @@ public abstract class DialogLevelWrapper {
      */
     private boolean canShow;
 
-    public DialogLevelWrapper(DialogLevelMng mLevelMng, IDialogLevel iDialogLevel) {
-        this.mLevelMng = mLevelMng;
+    private PropertyChangeSupport changes = new PropertyChangeSupport(this);
+
+    public DialogLevelWrapper(IDialogLevel iDialogLevel) {
         this.mLevel = iDialogLevel;
         attachToLevel(iDialogLevel);
     }
@@ -65,17 +68,17 @@ public abstract class DialogLevelWrapper {
     }
 
     public void notifyReadyStatus(boolean canShow) {
+        // 状态是否有改变
+        boolean readyChanged = !isReady();
+        boolean oldReadyValue = isReady();
         setReady(true);
+        boolean oldShowValue = this.canShow;
         setCanShow(canShow);
-        updateTaskStatus();
-    }
-
-    /**
-     * 通知管理器更新状态
-     */
-    private void updateTaskStatus() {
-        if (mLevelMng != null) {
-            mLevelMng.updateLevelStatus(this);
+        // 通知更新
+        changes.firePropertyChange("isReady", oldReadyValue, isReady());
+        // 避免重复更新
+        if (!readyChanged) {
+            changes.firePropertyChange("canShow", oldShowValue, isCanShow());
         }
     }
 
@@ -92,6 +95,14 @@ public abstract class DialogLevelWrapper {
         if (mLevel != null) {
             mLevel.release();
         }
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        changes.addPropertyChangeListener(listener);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        changes.removePropertyChangeListener(listener);
     }
 
     @Override

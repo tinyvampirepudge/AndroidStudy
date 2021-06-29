@@ -17,16 +17,16 @@ public class DialogLevelMngTest {
         DialogLevelMng mng = new DialogLevelMng();
         // 初始化各个任务
         DialogLevelImplFirst implFirst = new DialogLevelImplFirst();
-        DialogLevelWrapper wrapperFirst = new DialogLevelWrapperFirst(mng, implFirst);
+        DialogLevelWrapper wrapperFirst = new DialogLevelWrapperFirst(implFirst);
 
         DialogLevelImplSecond implSecond = new DialogLevelImplSecond();
-        DialogLevelWrapper wrapperSecond = new DialogLevelWrapperSecond(mng, implSecond);
+        DialogLevelWrapper wrapperSecond = new DialogLevelWrapperSecond(implSecond);
 
         DialogLevelImplThird implThird = new DialogLevelImplThird();
-        DialogLevelWrapper wrapperThird = new DialogLevelWrapperThird(mng, implThird);
+        DialogLevelWrapper wrapperThird = new DialogLevelWrapperThird(implThird);
 
         DialogLevelImplFourth implFourth = new DialogLevelImplFourth();
-        DialogLevelWrapper wrapperFourth = new DialogLevelWrapperFourth(mng, implFourth);
+        DialogLevelWrapper wrapperFourth = new DialogLevelWrapperFourth(implFourth);
         // 添加数据
         mng.add(wrapperFourth);
         mng.add(wrapperThird);
@@ -45,7 +45,7 @@ public class DialogLevelMngTest {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    implFirst.doSth();
+                    implFirst.doSth(true);
                     mng.log();
                 }
         ).start();
@@ -57,7 +57,7 @@ public class DialogLevelMngTest {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    implSecond.doSth();
+                    implSecond.doSth(true);
                     mng.log();
                 }
         ).start();
@@ -69,7 +69,7 @@ public class DialogLevelMngTest {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    implThird.doSth();
+                    implThird.doSth(true);
                     mng.log();
                 }
         ).start();
@@ -81,10 +81,24 @@ public class DialogLevelMngTest {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    implFourth.doSth();
+                    implFourth.doSth(true);
                     mng.log();
                 }
         ).start();
 
+        new Thread(
+                () -> {
+                    try {
+                        TimeUnit.SECONDS.sleep(5);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    implFirst.doSth(false);
+                    implSecond.doSth(false);
+                    implThird.doSth(false);
+                    implFourth.doSth(false);
+                    mng.log();
+                }
+        ).start();
     }
 }

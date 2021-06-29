@@ -22,10 +22,10 @@ public class DialogLevelImplSecond implements IDialogLevel {
         System.out.println(DialogLevelImplSecond.class.getSimpleName() + " show");
     }
 
-    public void doSth() {
+    public void doSth(boolean status) {
         System.out.println(DialogLevelImplSecond.class.getSimpleName() + " doSth 哎，就是玩儿!!!");
         if (mWrapper != null) {
-            mWrapper.notifyReadyStatus(false);
+            mWrapper.notifyReadyStatus(status);
         }
     }
 

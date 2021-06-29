@@ -1,5 +1,7 @@
 package com.tinytongtong.androidstudy.manager.dialoglevel.core;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -17,9 +19,9 @@ public class DialogLevelMng {
      */
     private boolean isFinished;
 
-    private Comparator<DialogLevelWrapper> comparator = new Comparator<DialogLevelWrapper>() {
+    private final Comparator<CustomPropertyChangeListener> listenerComparator = new Comparator<CustomPropertyChangeListener>() {
         @Override
-        public int compare(DialogLevelWrapper o1, DialogLevelWrapper o2) {
+        public int compare(CustomPropertyChangeListener o1, CustomPropertyChangeListener o2) {
             /**
              * 负数、0、正数
              * 小于、等于、大于
@@ -27,18 +29,26 @@ public class DialogLevelMng {
             return o1.priority() - o2.priority();
         }
     };
-
     /**
      * 优先级队列
      */
-    private List<DialogLevelWrapper> list = new ArrayList<>();
+    private final List<CustomPropertyChangeListener> listenerList = new ArrayList<>();
 
     public void add(DialogLevelWrapper level) {
-        if (level == null || list.contains(level)) {
+        if (level == null || containsLevel(listenerList, level)) {
             return;
         }
-        list.add(level);
-        Collections.sort(list, comparator);
+        CustomPropertyChangeListener propertyChangeListener = new CustomPropertyChangeListener(level) {
+
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                System.out.println("propertyChangeListener propertyChange: %s" + getLevelInfo(level));
+                updateLevelStatus(getLevel());
+            }
+        };
+        level.addPropertyChangeListener(propertyChangeListener);
+        listenerList.add(propertyChangeListener);
+        Collections.sort(listenerList, listenerComparator);
     }
 
     public boolean isFinished() {
@@ -50,12 +60,12 @@ public class DialogLevelMng {
     }
 
     public void updateLevelStatus(DialogLevelWrapper level) {
-        System.out.printf("updateLevelStatus level: ", getLevelInfo(level));
+        System.out.println("updateLevelStatus level: " + getLevelInfo(level));
         if (level == null) {
             return;
         }
 
-        if (!list.contains(level)) {
+        if (!containsLevel(listenerList, level)) {
             System.out.println("updateLevelStatus return level not added, " + getLevelInfo(level));
             return;
         }
@@ -68,6 +78,14 @@ public class DialogLevelMng {
         checkTopLevel();
     }
 
+    private boolean containsLevel(List<CustomPropertyChangeListener> listeners, DialogLevelWrapper level) {
+        for (CustomPropertyChangeListener listener : listeners) {
+            if (listener != null && listener.getLevel() == level) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     private void checkTopLevel() {
         System.out.println("checkTopLevel");
@@ -84,15 +102,12 @@ public class DialogLevelMng {
          *          ——如果最高优先级的元素的canShow为false，表示最高优先级的没机会展示，则将无展示机会的对话框从
          *            队列中移除。接着走下一次判断，尝试查看下一个优先级最高的元素。
          */
-        while (list != null && !list.isEmpty() && !isFinished()) {
-//            DialogLevelWrapper top = queue.peek();
-            DialogLevelWrapper top = list.get(0);
+        while (listenerList != null && !listenerList.isEmpty() && !isFinished()) {
+            DialogLevelWrapper top = listenerList.get(0) != null ? listenerList.get(0).getLevel() : null;
             // 剔除空数据，避免空指针
             if (top == null) {
                 System.out.println("checkTopLevel 剔除空数据，避免空指针, " + getLevelInfo(top));
-                if (!list.isEmpty()) {
-                    list.remove(0);
-                }
+                removeTop();
             } else {
                 // 优先级最高的弹窗，数据已经准备好
                 if (top.isReady()) {
@@ -101,15 +116,11 @@ public class DialogLevelMng {
                         System.out.println("checkTopLevel 优先级最高的弹窗，数据已经准备好，满足展示条件, " + getLevelInfo(top));
                         setFinished(true);
                         top.show();
-                        if (!list.isEmpty()) {
-                            list.remove(0);
-                        }
+                        removeTop();
                         notifyUnFinishedDialogs();
                     } else { // 不满足展示条件，任务出栈，准备看下一个优先级的任务
                         System.out.println("checkTopLevel 优先级最高的弹窗，数据已经准备好，不满足展示条件, " + getLevelInfo(top));
-                        if (!list.isEmpty()) {
-                            list.remove(0);
-                        }
+                        removeTop();
                     }
                 } else {
                     // no-op 栈顶的未准备好，对低优先级的任务进行判断会毫无意义，所以直接结束即可
@@ -120,15 +131,24 @@ public class DialogLevelMng {
         }
     }
 
+    private void removeTop() {
+        if (!listenerList.isEmpty()) {
+            CustomPropertyChangeListener removed = listenerList.remove(0);
+            if (removed != null && removed.getLevel() != null) {
+                removed.getLevel().removePropertyChangeListener(removed);
+            }
+        }
+    }
+
     /**
      * 通知未完成的任务
      */
     private void notifyUnFinishedDialogs() {
-        if (list != null && !list.isEmpty() && isFinished()) {
-            List<DialogLevelWrapper> listCopy = new ArrayList<>();
-            listCopy.addAll(list);
+        if (listenerList != null && !listenerList.isEmpty() && isFinished()) {
+            List<CustomPropertyChangeListener> listCopy = new ArrayList<>();
+            listCopy.addAll(listenerList);
             while (listCopy != null && !listCopy.isEmpty() && isFinished()) {
-                DialogLevelWrapper top = listCopy.get(0);
+                DialogLevelWrapper top = listCopy.get(0) != null ? listCopy.get(0).getLevel() : null;
                 // 剔除空数据，避免空指针
                 if (top != null) {
                     top.releaseRes();
@@ -153,7 +173,7 @@ public class DialogLevelMng {
      */
     public void log() {
         System.out.println("_________________log start_________________");
-        for (DialogLevelWrapper item : list) {
+        for (CustomPropertyChangeListener item : listenerList) {
             System.out.println(item);
         }
         System.out.println("_________________log end_________________");
@@ -165,6 +185,32 @@ public class DialogLevelMng {
                     wrapper.isReady(), wrapper.isCanShow());
         }
         return "";
+    }
+
+    private static abstract class CustomPropertyChangeListener implements PropertyChangeListener {
+        private DialogLevelWrapper level;
+
+        public CustomPropertyChangeListener(DialogLevelWrapper level) {
+            this.level = level;
+        }
+
+        public DialogLevelWrapper getLevel() {
+            return level;
+        }
+
+        public int priority() {
+            if (level != null) {
+                return level.priority();
+            }
+            return -1;
+        }
+
+        @Override
+        public String toString() {
+            return "CustomPropertyChangeListener{" +
+                    "priority=" + priority() +
+                    '}';
+        }
     }
 }
 

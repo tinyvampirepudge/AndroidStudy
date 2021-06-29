@@ -21,10 +21,10 @@ public class DialogLevelImplFourth implements IDialogLevel {
         System.out.println(DialogLevelImplFourth.class.getSimpleName() + " show");
     }
 
-    public void doSth() {
+    public void doSth(boolean status) {
         System.out.println(DialogLevelImplFourth.class.getSimpleName() + " doSth 哎，就是玩儿!!!");
         if (mWrapper != null) {
-            mWrapper.notifyReadyStatus(false);
+            mWrapper.notifyReadyStatus(status);
         }
     }
 

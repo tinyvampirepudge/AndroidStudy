@@ -11,8 +11,8 @@ import com.tinytongtong.androidstudy.manager.dialoglevel.core.DialogLevelWrapper
  */
 public class DialogLevelWrapperFourth extends DialogLevelWrapper {
 
-    public DialogLevelWrapperFourth(DialogLevelMng mLevelMng, IDialogLevel iDialogLevel) {
-        super(mLevelMng, iDialogLevel);
+    public DialogLevelWrapperFourth(IDialogLevel iDialogLevel) {
+        super(iDialogLevel);
     }
 
     @Override
