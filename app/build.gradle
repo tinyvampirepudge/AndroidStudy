@@ -89,7 +89,7 @@ dependencies {
     implementation 'com.davemorrissey.labs:subsampling-scale-image-view-androidx:3.10.0'
 
     // tinyutils
-    implementation 'com.tinytongtong:tinyutils:0.0.8'
+    api 'com.tinytongtong:tinyutils:0.0.8'
 
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
     // Because RxAndroid releases are few and far between, it is recommended you also

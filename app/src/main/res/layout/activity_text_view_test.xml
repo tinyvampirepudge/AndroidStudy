@@ -13,4 +13,37 @@
         android:layout_margin="20dp"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#14141414"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@id/tv">
+
+        <TextView
+            android:id="@+id/tv_xml"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_selector"
+            android:padding="10dp"
+            android:text="阿西吧-selected-false"
+            android:textColor="@color/item_label_color" />
+
+        <TextView
+            android:id="@+id/tv_xml1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_selector"
+            android:padding="10dp"
+            android:text="阿西吧-selected-true"
+            android:textColor="@color/item_label_color" />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
