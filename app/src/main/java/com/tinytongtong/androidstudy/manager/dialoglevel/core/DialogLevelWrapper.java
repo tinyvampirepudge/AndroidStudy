@@ -4,7 +4,7 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 /**
- * @Description: IInfoBusDialogLevel的代理类，将单个对话框和优先级管理器连接起来
+ * @Description: {@link IDialogLevel}的代理类，将单个对话框和优先级管理器连接起来
  * 链接{@link IDialogLevel}与{@link DialogLevelMng}
  * @Author tinytongtong
  * @Date 2021/6/2 8:40 PM

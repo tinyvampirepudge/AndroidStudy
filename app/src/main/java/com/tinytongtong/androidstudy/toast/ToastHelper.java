@@ -72,7 +72,7 @@ public class ToastHelper {
 //            toast = null;
 //        }
         Toast toast = new Toast(context);
-        android.view.View view = LayoutInflater.from(context).inflate(R.layout.info_bus_common_toast_view, null, false);
+        android.view.View view = LayoutInflater.from(context).inflate(R.layout.common_toast_view, null, false);
         android.widget.TextView tvContent = view.findViewById(R.id.tv_content);
         tvContent.setText(msg);
         toast.setView(view);

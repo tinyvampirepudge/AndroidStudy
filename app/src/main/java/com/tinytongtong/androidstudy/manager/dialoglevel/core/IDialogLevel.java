@@ -13,7 +13,7 @@ public interface IDialogLevel {
     void show();
 
     /**
-     * {@link IDialogLevel}的实现类，必须持有InfoBusDialogLevelWrapper的引用。
+     * {@link IDialogLevel}的实现类，必须持有{@link DialogLevelWrapper}的引用。
      * 这样才能调用Wrapper中的通知逻辑。
      *
      * @param wrapper

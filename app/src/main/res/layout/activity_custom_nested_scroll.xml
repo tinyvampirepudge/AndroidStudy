@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cardview_dark_background"
+    android:orientation="horizontal"
+    tools:context=".nestedscrolling.CustomNestedScrollActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="50dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="100dp"
+        android:background="@color/background_info"
+        android:gravity="center"
+        android:text="我\n是\n标\n题" />
+
+    <com.tinytongtong.androidstudy.nestedscrolling.CustomNestedScrollParent
+        android:id="@+id/nested_scroll_parent"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="100dp">
+
+        <com.tinytongtong.androidstudy.nestedscrolling.CustomNestedScrollChildFrameLayout
+            android:id="@+id/nested_scroll_child"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_top_radius_16"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <!--      android:clickable="true" 必须添加，不然无法滑动      -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/background_wtf"
+                    android:gravity="center"
+                    android:text="我是抽屉的内容_match_parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </LinearLayout>
+
+
+        </com.tinytongtong.androidstudy.nestedscrolling.CustomNestedScrollChildFrameLayout>
+
+    </com.tinytongtong.androidstudy.nestedscrolling.CustomNestedScrollParent>
+
+</LinearLayout>

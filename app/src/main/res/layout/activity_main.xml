@@ -194,6 +194,14 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_breath_anim" />
 
+        <Button
+            android:id="@+id/btn_nested_scroll"
+            style="@style/btn_style_lower"
+            android:text="NestedScroll组件实现横向抽屉效果"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_component_callback" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>

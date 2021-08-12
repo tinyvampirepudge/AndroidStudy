@@ -11,7 +11,7 @@
         tools:text="闹钟设置成功"
         android:padding="15dp"
         android:gravity="center"
-        android:background="@drawable/info_bus_toast_bg"
+        android:background="@drawable/toast_bg"
         android:textSize="14sp"
         android:minWidth="190dp"
         android:textColor="#fff"
