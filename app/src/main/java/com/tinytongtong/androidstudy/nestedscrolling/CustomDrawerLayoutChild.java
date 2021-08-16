@@ -64,11 +64,6 @@ public class CustomNestedScrollChildFrameLayout extends FrameLayout implements N
     public void requestDisallowInterceptScroll(boolean disallowIntercept) {
         mDisallowInterceptScroll = disallowIntercept;
     }
-
-    private void log(String s) {
-        LogUtils.INSTANCE.d("NestedScroll-Child", s);
-    }
-
     @Override
     public boolean onInterceptTouchEvent(MotionEvent event) {
 
@@ -156,7 +151,7 @@ public class CustomNestedScrollChildFrameLayout extends FrameLayout implements N
         switch (action) {
             case MotionEvent.ACTION_DOWN:
                 mIsBeingDragged = false;
-                // TODO-wjz: 2021/8/12 6:47 PM  水平
+                // 水平
                 int nestedScrollAxis = ViewCompat.SCROLL_AXIS_HORIZONTAL;
                 startNestedScroll(nestedScrollAxis);
                 mStartX = event.getX();
@@ -170,9 +165,8 @@ public class CustomNestedScrollChildFrameLayout extends FrameLayout implements N
                     break;
                 }
 
-                // TODO-wjz: 2021/8/12 6:54 PM 水平滑动
+                // 水平滑动
                 int dx = -(int) (event.getX() - mStartX);
-                int dy = -(int) (event.getY() - mStartY);
                 if (mIsBeingDragged) {
                     dispatchNestedPreScroll(dx, 0, new int[]{0, 0}, new int[]{0, 0});
                     return true;
@@ -254,4 +248,9 @@ public class CustomNestedScrollChildFrameLayout extends FrameLayout implements N
     public boolean dispatchNestedPreFling(float velocityX, float velocityY) {
         return mNestedChildHelper.dispatchNestedPreFling(velocityX, velocityY);
     }
+
+    private void log(String s) {
+        LogUtils.INSTANCE.d("NestedScroll-Child", s);
+    }
+
 }

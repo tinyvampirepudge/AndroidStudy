@@ -1,24 +1,20 @@
 package com.tinytongtong.androidstudy.nestedscrolling;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Scroller;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.Px;
 import androidx.core.view.NestedScrollingParent;
 import androidx.core.view.ViewCompat;
 
 import com.tinytongtong.androidstudy.R;
 import com.tinytongtong.tinyutils.LogUtils;
-import com.tinytongtong.tinyutils.ScreenUtils;
 
 import java.util.Arrays;
 
@@ -36,23 +32,21 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
     /**
      * 展开状态
      */
-    public static final int STATE_EXPANDED = 0;
+    private static final int STATE_EXPANDED = 0;
     /**
      * 收起状态
      */
-    public static final int STATE_COLLAPSED = 1;
-    //    public static final int STATE_ANCHORED = 2;
+    private static final int STATE_COLLAPSED = 1;
     /**
      * 滑动状态
      */
-    public static final int STATE_SCROLLING = 4;
-    public static final int STATE_SCROLL_DOWN_BOUND = 5; // 从属于STATE_SCROLLING态，代表往下滑到底部的时候再往下滑的状态
-    public static final int STATE_SCROLL_TO_EXPANDED = 6;// 从属于STATE_SCROLLING态，代表往即将上滑
+    private static final int STATE_SCROLLING = 4;
+    private static final int STATE_SCROLL_DOWN_BOUND = 5; // 从属于STATE_SCROLLING态，代表往下滑到底部的时候再往下滑的状态
+    private static final int STATE_SCROLL_TO_EXPANDED = 6;// 从属于STATE_SCROLLING态，代表往即将上滑
 
-    //    public static final float ANCHOR_POINT = 1 - 0.618f;
-    public static final float COLLAPSE_POINT = 0.9f;
+    private static final float COLLAPSE_POINT = 0.9f;
 
-    public static final int DEFAULT_SCROLL_DURATION = 600;
+    private static final int DEFAULT_SCROLL_DURATION = 600;
 
     /**
      * 默认状态
@@ -75,7 +69,6 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
      */
     private boolean mIsDoingNestedScroll = false;
 
-    //    private float mAnchorPoint = ANCHOR_POINT;
     private float mCollapsePoint = COLLAPSE_POINT;
 
     private SlideListener mListener;
@@ -100,13 +93,6 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
 
     private void init(Context context) {
         mScroller = new Scroller(context);
-//        if (context instanceof Activity) {
-//            int authorWidth = ScreenUtils.dip2px(context, 200);
-//            int widowWidth = getWindowWidth((Activity) context);
-//            float rateAnchor = (float) authorWidth / widowWidth;
-//            mAnchorPoint = 1 - rateAnchor;
-//            log(String.format("init authorWidth:%s, widowWidth:%s, mAnchorPoint:%s", authorWidth, widowWidth, mAnchorPoint));
-//        }
 
         mShadowDrawable = context.getResources().getDrawable(R.drawable.bg_shadow_up_2);
 
@@ -119,14 +105,67 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
         this.setWillNotDraw(false);
     }
 
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-//        if (isNeedShadow && mShadowDrawable != null) {
-//            // 在最顶部画上阴影
-//            mShadowDrawable.setBounds(0, -mShadowHeight, this.getMeasuredWidth(), 0);
-//            mShadowDrawable.draw(canvas);
-//        }
+
+    public void setPanelStatePrivate(int state) {
+        if (mState != state) {
+            final int o = this.mState;
+            mState = state;
+            if (mListener != null) {
+                mListener.onStateChanged(o, state);
+            }
+        }
+    }
+
+    public void addPanelSlideListener(SlideListener listener) {
+        mListener = listener;
+    }
+
+    public int getPanelState() {
+        return mState;
+    }
+
+    public void setExpandState(){
+        setExpandStateWithDuration(DEFAULT_SCROLL_DURATION);
+    }
+
+    public void setExpandStateWithDuration(int duration){
+//        setPanelStatePrivate(STATE_EXPANDED);
+        setPanelState(STATE_EXPANDED, duration);
+    }
+
+    public void setCollapseState(){
+        setCollapseStateWithDuration(DEFAULT_SCROLL_DURATION);
+    }
+
+    public void setCollapseStateWithDuration(int duration){
+//        setPanelStatePrivate(STATE_EXPANDED);
+        setPanelState(STATE_COLLAPSED, duration);
+    }
+
+    public void setPanelState(int state, int duration) {
+        log(String.format("setPanelState state:%s, duration:%s", state, duration));
+        if (state == STATE_SCROLLING) {
+            log(String.format("setPanelState state error return, state:%s, duration:%s", state, duration));
+            return;
+//            throw new IllegalStateException("state error");
+        }
+
+        setPanelStatePrivate(state);
+
+        final int width = this.getMeasuredWidth();
+        log(String.format("setPanelState width:%s", width));
+        if (width <= 0) { // 初始化还未完成
+            return;
+        }
+
+        if (state == STATE_EXPANDED
+                || state == STATE_COLLAPSED) {
+            smoothScrollToState(state, duration);
+        }
+    }
+
+    public void setScrollEnable(boolean scrollEnable) {
+        isScrollEnable = scrollEnable;
     }
 
     @Override
@@ -148,7 +187,7 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
         // 向右滑动收起。
         boolean needToHideRight = dx > 0 && scrollX < 0;
         // 向左滑动展开。
-        boolean needToShowLeft = dx < 0 && scrollY > -(mCollapsePoint * getMeasuredWidth()) && !ViewCompat.canScrollHorizontally(target, -1);
+        boolean needToShowLeft = dx < 0 && scrollY > -getCollapseX() && !ViewCompat.canScrollHorizontally(target, -1);
 
         log(String.format("onNestedPreScroll needToHideRight:%s, needToShowLeft:%s", needToHideRight, needToShowLeft));
 
@@ -215,8 +254,8 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
         if (x > 0) {
             x = 0;
         }
-        if (x < -(mCollapsePoint * getMeasuredWidth())) {
-            x = -(int) (mCollapsePoint * getMeasuredWidth());
+        if (x < -getCollapseX()) {
+            x = -getCollapseX();
         }
 
         if (mListener != null && getMeasuredWidth() != 0) {
@@ -236,127 +275,21 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
             invalidate();
         } else {
             if (mIsDoingNestedScroll) {
+                log(String.format("computeScroll() else return mIsDoingNestedScroll is true"));
                 return;
             }
             int finalX = mScroller.getFinalX();
             int width = this.getMeasuredWidth();
 //            int anchorX = -(int) (mAnchorPoint * width);
-            int collapseX = -(int) (mCollapsePoint * width);
+            int collapseX = -getCollapseX();
 
+            log(String.format("computeScroll() else finalX:%s, width:%s,collapseX:%s", finalX, width, collapseX));
             if (finalX == 0) {
                 setPanelStatePrivate(STATE_EXPANDED);
             } else if (finalX == collapseX) {
                 setPanelStatePrivate(STATE_COLLAPSED);
             }
         }
-    }
-
-    /**
-     * 手指松开时。
-     *
-     * @param velX x轴的速度;
-     */
-    private void onFingerReleased(float velX) {
-
-        int currentX = getScrollX();
-//        int anchorX = -(int) (mAnchorPoint * this.getMeasuredWidth());
-        int collapseX = -(int) (mCollapsePoint * this.getMeasuredWidth());
-
-        log(String.format("onFingerReleased mCollapsePoint:%s, this.getMeasuredWidth():%s", mCollapsePoint, this.getMeasuredWidth()));
-        log(String.format("onFingerReleased velX:%s, currentX:%s, collapseX:%s", velX, currentX, collapseX));
-
-        int targetState = STATE_EXPANDED;
-
-        if (velX > 0) { // 向上滑
-//            if (currentX > anchorX) {
-//                targetState = STATE_EXPANDED;
-//            } else {
-//                targetState = STATE_ANCHORED;
-//            }
-            targetState = STATE_EXPANDED;
-        } else if (velX < 0) { // 向下滑
-//            if (currentX < anchorX) {
-//                targetState = STATE_COLLAPSED;
-//            } else {
-//                targetState = STATE_ANCHORED;
-//            }
-            targetState = STATE_COLLAPSED;
-        } else {  // 没滑动
-//            if (currentX > anchorX / 2) {
-//                targetState = STATE_EXPANDED;
-//            } else if (currentX > (anchorX + collapseX) / 2) {
-//                targetState = STATE_ANCHORED;
-//            } else {
-//                targetState = STATE_COLLAPSED;
-//            }
-
-            if (currentX > collapseX / 2) {
-                targetState = STATE_EXPANDED;
-            } else {
-                targetState = STATE_COLLAPSED;
-            }
-        }
-        if (mListener != null) {
-            mListener.onSlideReleased(velX, 0, targetState);
-        }
-
-        smoothScrollToState(targetState, DEFAULT_SCROLL_DURATION);
-    }
-
-    private void smoothScrollToState(int state, int duration) {
-        int width = this.getMeasuredWidth();
-        if (width <= 0) {
-            return;
-        }
-
-        int x = 0;
-        if (state == STATE_EXPANDED) {
-            x = 0;
-        } else if (state == STATE_COLLAPSED) {
-            x = -(int) (mCollapsePoint * width);
-        } else {
-            return;
-        }
-        smoothScrollTo(x, duration);
-    }
-
-    private void smoothScrollTo(int targetX, int duration) {
-        log("smoothScrollTo() " + targetX + ", " + duration);
-        int currentX = getScrollX();
-        mScroller.startScroll(currentX, 0, targetX - currentX, 0, duration);
-        invalidate();
-    }
-
-    public int getPanelHeight() {
-        return (int) ((1 - mCollapsePoint) * this.getMeasuredHeight());
-    }
-
-    public void setPanelStatePrivate(int state) {
-        if (mState != state) {
-            final int o = this.mState;
-            mState = state;
-            if (mListener != null) {
-                mListener.onStateChanged(o, state);
-            }
-        }
-    }
-
-    public interface SlideListener {
-        void onStateChanged(int oldState, int newState);
-
-        void onScrollOffset(float offset);
-
-        void onSlideReleased(float dx, float dy, int state);
-    }
-
-    public void addPanelSlideListener(SlideListener listener) {
-        mListener = listener;
-    }
-
-    public void appearAnimation(int state) {
-        this.setScrollY(-this.getMeasuredHeight());
-        smoothScrollToState(state, DEFAULT_SCROLL_DURATION);
-        this.setVisibility(VISIBLE);
     }
 
     @Override
@@ -372,72 +305,164 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
         return super.onInterceptTouchEvent(ev);
     }
 
-    private void log(String s) {
-        LogUtils.INSTANCE.d("NestedScroll-Parent", s);
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        log("onMeasure");
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
+        log(String.format("onLayout changed:%s,left:%s,top:%s,right:%s,bottom:%s",
+                changed, left, top, right, bottom));
+        // 布局宽度变化的时候，需要手动调整 mScrollX 的位置
+        if (changed) {
+            adjustScroller();
+        }
+    }
+
+    @Override
+    protected void dispatchDraw(Canvas canvas) {
+        super.dispatchDraw(canvas);
+        log("dispatchDraw");
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+//        if (isNeedShadow && mShadowDrawable != null) {
+//            // 在最顶部画上阴影
+//            mShadowDrawable.setBounds(0, -mShadowHeight, this.getMeasuredWidth(), 0);
+//            mShadowDrawable.draw(canvas);
+//        }
+    }
+
+    /**
+     * 手指松开时。
+     *
+     * @param velX x轴的速度;
+     */
+    private void onFingerReleased(float velX) {
+
+        int currentX = getScrollX();
+        int collapseX = -getCollapseX();
+
+        log(String.format("onFingerReleased velX:%s, currentX:%s, collapseX:%s", velX, currentX, collapseX));
+
+        int targetState = STATE_EXPANDED;
+
+        if (velX > 0) { // 向坐滑
+            targetState = STATE_EXPANDED;
+        } else if (velX < 0) { // 向右滑
+            targetState = STATE_COLLAPSED;
+        } else {  // 没滑动
+            if (currentX > collapseX / 2) {
+                targetState = STATE_EXPANDED;
+            } else {
+                targetState = STATE_COLLAPSED;
+            }
+        }
+        if (mListener != null) {
+            mListener.onSlideReleased(velX, 0, targetState);
+        }
+
+        smoothScrollToState(targetState, DEFAULT_SCROLL_DURATION);
+    }
+
+    private void smoothScrollToState(int state, int duration) {
+        log(String.format("smoothScrollToState state:%s, duration:%s", state, duration));
+        int width = this.getMeasuredWidth();
+        if (width <= 0) {
+            log(String.format("smoothScrollToState return width:%s", width));
+            return;
+        }
+
+        int x = 0;
+        if (state == STATE_EXPANDED) {
+            x = 0;
+        } else if (state == STATE_COLLAPSED) {
+            x = -getCollapseX();
+        } else {
+            log(String.format("smoothScrollToState return state else"));
+            return;
+        }
+        smoothScrollTo(x, duration);
+    }
+
+    private void smoothScrollTo(int targetX, int duration) {
+        log("smoothScrollTo() " + targetX + ", " + duration);
+        log(String.format("smoothScrollTo targetX:%s, duration:%s", targetX, duration));
+        int currentX = getScrollX();
+        // TODO-wjz: 2021/8/16 4:53 PM
+        int dx = targetX - currentX;
+        log(String.format("smoothScrollTo currentX:%s, dx:%s", currentX, dx));
+        mScroller.startScroll(currentX, 0, dx, 0, duration);
+        invalidate();
     }
 
 
-    public float getCollapsePoint() {
-        return mCollapsePoint;
+    public void appearAnimation(int state) {
+        this.setScrollY(-this.getMeasuredHeight());
+        smoothScrollToState(state, DEFAULT_SCROLL_DURATION);
+        this.setVisibility(VISIBLE);
     }
 
-    public void setPanelHeight(int height) {
-        if (height <= 0) return;
+    /**
+     * 控件宽度变化后，需要手动调整 mScrollX 的位置
+     * 不然 mScrollX 的值跟当前的宽度不匹配，下次滚动，起点就不是当前View真实的起点，就可能会导致页面上额外的闪烁。
+     */
+    private void adjustScroller() {
+        log(String.format("adjustScroller start getPanelState():%s, getScrollX():%s", getPanelState(), getScrollX()));
+        if (mScroller == null) {
+            log(String.format("adjustScroller return mScroller == null"));
+            return;
+        }
 
-        float h = this.getMeasuredHeight();
-        float p = (h - height) / h;
-
-        if (p != mCollapsePoint) {
-            mCollapsePoint = p;
-            if (mState == STATE_COLLAPSED) {
-                smoothScrollToState(STATE_COLLAPSED, 100);
+        if (getPanelState() == STATE_EXPANDED || getPanelState() == STATE_COLLAPSED) {
+            /*
+            校验当前的state 和 新宽度下的 mScrollX 是否匹配
+            如果不匹配，就更新 mScrollX 的值。
+             */
+            // ①expand模式下，偏移量是0
+            if (getPanelState() == STATE_EXPANDED && getScrollX() != 0) {
+                setScrollX(0);
+            } else if (getPanelState() == STATE_COLLAPSED) {
+                int width = this.getMeasuredWidth();
+                int newScrollX = -getCollapseX();
+                log(String.format("adjustScroller start newScrollX:%s, getScrollX():%s", newScrollX, getScrollX()));
+                if (newScrollX != getScrollX()) {
+                    setScrollX(newScrollX);
+                }
             }
         }
     }
 
-
-    public int getPanelState() {
-        return mState;
-    }
-
-    public void setPanelState(int state) {
-        setPanelState(state, DEFAULT_SCROLL_DURATION);
-    }
-
-    public void setPanelState(int state, int duration) {
-        if (state == STATE_SCROLLING) {
-            log(String.format("setPanelState state error return, state:%s, duration:%s", state, duration));
-            return;
-//            throw new IllegalStateException("state error");
-        }
-
-        final int width = this.getMeasuredWidth();
-        if (width <= 0) { // 初始化还未完成
-            setPanelStatePrivate(state);
-            return;
-        }
-
-        if (state == STATE_EXPANDED
-                || state == STATE_COLLAPSED) {
-            smoothScrollToState(state, duration);
-        }
-    }
-
-    public void setScrollEnable(boolean scrollEnable) {
-        isScrollEnable = scrollEnable;
+    /**
+     * 获取展开状态下，对应的水平位置
+     * @return
+     */
+    private int getExpandX(){
+        return (int) (mCollapsePoint * getMeasuredWidth());
     }
 
     /**
-     * 得到手机屏幕高
-     *
+     * 获取收起状态下，对应的水平位置
      * @return
      */
-    public static int getWindowWidth(@Nullable Activity window) {
-        if (window == null || window.isFinishing()) {
-            return 0;
-        }
-        DisplayMetrics dm = new DisplayMetrics();
-        window.getWindowManager().getDefaultDisplay().getMetrics(dm);
-        return dm.widthPixels;
+    private int getCollapseX(){
+        return (int) (mCollapsePoint * getMeasuredWidth());
+    }
+
+    private void log(String s) {
+        LogUtils.INSTANCE.d("NestedScroll-Parent", s);
+    }
+
+    public interface SlideListener {
+        void onStateChanged(int oldState, int newState);
+
+        void onScrollOffset(float offset);
+
+        void onSlideReleased(float dx, float dy, int state);
     }
 }
