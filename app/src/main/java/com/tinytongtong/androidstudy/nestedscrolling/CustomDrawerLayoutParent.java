@@ -1,8 +1,6 @@
 package com.tinytongtong.androidstudy.nestedscrolling;
 
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -13,7 +11,6 @@ import androidx.annotation.Px;
 import androidx.core.view.NestedScrollingParent;
 import androidx.core.view.ViewCompat;
 
-import com.tinytongtong.androidstudy.R;
 import com.tinytongtong.tinyutils.LogUtils;
 
 import java.util.Arrays;
@@ -63,7 +60,7 @@ public class CustomDrawerLayoutParent extends FrameLayout implements NestedScrol
 
     private float mCollapsePoint = COLLAPSE_POINT;
 
-    private SlideListener mListener;
+    private DrawerListener mListener;
     private boolean isScrollEnable = true;
 
     public CustomDrawerLayoutParent(Context context) {
@@ -97,7 +94,7 @@ public class CustomDrawerLayoutParent extends FrameLayout implements NestedScrol
         }
     }
 
-    public void addPanelSlideListener(SlideListener listener) {
+    public void addPanelSlideListener(DrawerListener listener) {
         mListener = listener;
     }
 
@@ -411,7 +408,7 @@ public class CustomDrawerLayoutParent extends FrameLayout implements NestedScrol
         LogUtils.INSTANCE.d("NestedScroll-Parent", s);
     }
 
-    public interface SlideListener {
+    public interface DrawerListener {
         void onStateChanged(int oldState, int newState);
 
         void onScrollOffset(float offset);

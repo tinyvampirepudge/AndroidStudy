@@ -65,7 +65,7 @@ public class CustomNestedScrollActivity extends AppCompatActivity {
             }
         });
 
-        nested_scroll_parent.addPanelSlideListener(new CustomDrawerLayoutParent.SlideListener() {
+        nested_scroll_parent.addPanelSlideListener(new CustomDrawerLayoutParent.DrawerListener() {
             @Override
             public void onStateChanged(int oldState, int newState) {
                 if (newState == 0) {
