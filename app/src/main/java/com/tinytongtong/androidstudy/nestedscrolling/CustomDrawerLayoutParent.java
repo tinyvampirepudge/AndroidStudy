@@ -19,24 +19,25 @@ import com.tinytongtong.tinyutils.LogUtils;
 import java.util.Arrays;
 
 /**
- * @Description: 实现了 NestedScrollingParent 接口的一个 Layout。
- * - 作为一个 nested parent，能接收其子 View (实现了NestedScrollingChild) 传递来的嵌套滚动事件；
- * - 子View 可以是任意实现了 NestedScrollingChild 接口的对象，比如 RecyclerView, DGPNestedScrollFrameLayout ...
- * - 可以设置三个滚动档位：expanded, collapse, anchored.
+ * @Description: 支持嵌套滑动，使用 {@link androidx.core.view.NestedScrollingParent} 和 {@link androidx.core.view.NestedScrollingChild} 实现。
+ * - 实现了 NestedScrollingParent 接口的一个 Layout。
+ * - 作为一个 nested parent，能接收其子 View (实现了{@link androidx.core.view.NestedScrollingChild}) 传递来的嵌套滚动事件；
+ * - 子View 可以是任意实现了 {@link androidx.core.view.NestedScrollingChild} 接口的对象，比如 RecyclerView ...
+ * - 可以设置两个滚动档位：expand, collapse.
  * @Author wangjianzhou
  * @Date 2021/8/12 11:37 AM
  * @Version
  */
-public class CustomNestedScrollParent extends FrameLayout implements NestedScrollingParent {
+public class CustomDrawerLayoutParent extends FrameLayout implements NestedScrollingParent {
 
     /**
      * 展开状态
      */
-    private static final int STATE_EXPANDED = 0;
+    private static final int STATE_EXPAND = 0;
     /**
      * 收起状态
      */
-    private static final int STATE_COLLAPSED = 1;
+    private static final int STATE_COLLAPSE = 1;
     /**
      * 滑动状态
      */
@@ -51,16 +52,7 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
     /**
      * 默认状态
      */
-    private int mState = STATE_EXPANDED;
-
-    /**
-     * 顶部阴影
-     */
-    private Drawable mShadowDrawable;
-    /**
-     * 顶部阴影高度
-     */
-    private int mShadowHeight;
+    private int mState = STATE_EXPAND;
 
     private Scroller mScroller;
 
@@ -72,20 +64,19 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
     private float mCollapsePoint = COLLAPSE_POINT;
 
     private SlideListener mListener;
-    private boolean isNeedShadow = false;
     private boolean isScrollEnable = true;
 
-    public CustomNestedScrollParent(Context context) {
+    public CustomDrawerLayoutParent(Context context) {
         super(context);
         init(context);
     }
 
-    public CustomNestedScrollParent(Context context, AttributeSet attrs) {
+    public CustomDrawerLayoutParent(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }
 
-    public CustomNestedScrollParent(Context context, AttributeSet attrs, int defStyleAttr) {
+    public CustomDrawerLayoutParent(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }
@@ -93,16 +84,6 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
 
     private void init(Context context) {
         mScroller = new Scroller(context);
-
-        mShadowDrawable = context.getResources().getDrawable(R.drawable.bg_shadow_up_2);
-
-        float density = context.getResources().getDisplayMetrics().density;
-
-        // 4dp
-        mShadowHeight = (int) (density * 4);
-
-        // 使 onDraw() 方法被调用
-        this.setWillNotDraw(false);
     }
 
 
@@ -124,22 +105,20 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
         return mState;
     }
 
-    public void setExpandState(){
+    public void setExpandState() {
         setExpandStateWithDuration(DEFAULT_SCROLL_DURATION);
     }
 
-    public void setExpandStateWithDuration(int duration){
-//        setPanelStatePrivate(STATE_EXPANDED);
-        setPanelState(STATE_EXPANDED, duration);
+    public void setExpandStateWithDuration(int duration) {
+        setPanelState(STATE_EXPAND, duration);
     }
 
-    public void setCollapseState(){
+    public void setCollapseState() {
         setCollapseStateWithDuration(DEFAULT_SCROLL_DURATION);
     }
 
-    public void setCollapseStateWithDuration(int duration){
-//        setPanelStatePrivate(STATE_EXPANDED);
-        setPanelState(STATE_COLLAPSED, duration);
+    public void setCollapseStateWithDuration(int duration) {
+        setPanelState(STATE_COLLAPSE, duration);
     }
 
     public void setPanelState(int state, int duration) {
@@ -147,7 +126,6 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
         if (state == STATE_SCROLLING) {
             log(String.format("setPanelState state error return, state:%s, duration:%s", state, duration));
             return;
-//            throw new IllegalStateException("state error");
         }
 
         setPanelStatePrivate(state);
@@ -158,14 +136,10 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
             return;
         }
 
-        if (state == STATE_EXPANDED
-                || state == STATE_COLLAPSED) {
+        if (state == STATE_EXPAND
+                || state == STATE_COLLAPSE) {
             smoothScrollToState(state, duration);
         }
-    }
-
-    public void setScrollEnable(boolean scrollEnable) {
-        isScrollEnable = scrollEnable;
     }
 
     @Override
@@ -198,11 +172,11 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
         }
 
         log(String.format("onNestedPreScroll mState:%s", mState));
-        if ((mState == STATE_COLLAPSED || mState == STATE_SCROLL_DOWN_BOUND) && dx < 0) {
+        if ((mState == STATE_COLLAPSE || mState == STATE_SCROLL_DOWN_BOUND) && dx < 0) {
             setPanelStatePrivate(STATE_SCROLL_DOWN_BOUND);
             return;
         }
-        if ((mState == STATE_COLLAPSED || mState == STATE_SCROLL_TO_EXPANDED) && dx > 0) {
+        if ((mState == STATE_COLLAPSE || mState == STATE_SCROLL_TO_EXPANDED) && dx > 0) {
             setPanelStatePrivate(STATE_SCROLL_TO_EXPANDED);
             return;
         }
@@ -280,14 +254,13 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
             }
             int finalX = mScroller.getFinalX();
             int width = this.getMeasuredWidth();
-//            int anchorX = -(int) (mAnchorPoint * width);
             int collapseX = -getCollapseX();
 
             log(String.format("computeScroll() else finalX:%s, width:%s,collapseX:%s", finalX, width, collapseX));
             if (finalX == 0) {
-                setPanelStatePrivate(STATE_EXPANDED);
+                setPanelStatePrivate(STATE_EXPAND);
             } else if (finalX == collapseX) {
-                setPanelStatePrivate(STATE_COLLAPSED);
+                setPanelStatePrivate(STATE_COLLAPSE);
             }
         }
     }
@@ -306,12 +279,6 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
     }
 
     @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        log("onMeasure");
-    }
-
-    @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
         log(String.format("onLayout changed:%s,left:%s,top:%s,right:%s,bottom:%s",
@@ -320,22 +287,6 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
         if (changed) {
             adjustScroller();
         }
-    }
-
-    @Override
-    protected void dispatchDraw(Canvas canvas) {
-        super.dispatchDraw(canvas);
-        log("dispatchDraw");
-    }
-
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-//        if (isNeedShadow && mShadowDrawable != null) {
-//            // 在最顶部画上阴影
-//            mShadowDrawable.setBounds(0, -mShadowHeight, this.getMeasuredWidth(), 0);
-//            mShadowDrawable.draw(canvas);
-//        }
     }
 
     /**
@@ -350,17 +301,17 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
 
         log(String.format("onFingerReleased velX:%s, currentX:%s, collapseX:%s", velX, currentX, collapseX));
 
-        int targetState = STATE_EXPANDED;
+        int targetState = STATE_EXPAND;
 
         if (velX > 0) { // 向坐滑
-            targetState = STATE_EXPANDED;
+            targetState = STATE_EXPAND;
         } else if (velX < 0) { // 向右滑
-            targetState = STATE_COLLAPSED;
+            targetState = STATE_COLLAPSE;
         } else {  // 没滑动
             if (currentX > collapseX / 2) {
-                targetState = STATE_EXPANDED;
+                targetState = STATE_EXPAND;
             } else {
-                targetState = STATE_COLLAPSED;
+                targetState = STATE_COLLAPSE;
             }
         }
         if (mListener != null) {
@@ -379,9 +330,9 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
         }
 
         int x = 0;
-        if (state == STATE_EXPANDED) {
+        if (state == STATE_EXPAND) {
             x = 0;
-        } else if (state == STATE_COLLAPSED) {
+        } else if (state == STATE_COLLAPSE) {
             x = -getCollapseX();
         } else {
             log(String.format("smoothScrollToState return state else"));
@@ -419,15 +370,15 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
             return;
         }
 
-        if (getPanelState() == STATE_EXPANDED || getPanelState() == STATE_COLLAPSED) {
+        if (getPanelState() == STATE_EXPAND || getPanelState() == STATE_COLLAPSE) {
             /*
             校验当前的state 和 新宽度下的 mScrollX 是否匹配
             如果不匹配，就更新 mScrollX 的值。
              */
             // ①expand模式下，偏移量是0
-            if (getPanelState() == STATE_EXPANDED && getScrollX() != 0) {
+            if (getPanelState() == STATE_EXPAND && getScrollX() != 0) {
                 setScrollX(0);
-            } else if (getPanelState() == STATE_COLLAPSED) {
+            } else if (getPanelState() == STATE_COLLAPSE) {
                 int width = this.getMeasuredWidth();
                 int newScrollX = -getCollapseX();
                 log(String.format("adjustScroller start newScrollX:%s, getScrollX():%s", newScrollX, getScrollX()));
@@ -440,17 +391,19 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
 
     /**
      * 获取展开状态下，对应的水平位置
+     *
      * @return
      */
-    private int getExpandX(){
+    private int getExpandX() {
         return (int) (mCollapsePoint * getMeasuredWidth());
     }
 
     /**
      * 获取收起状态下，对应的水平位置
+     *
      * @return
      */
-    private int getCollapseX(){
+    private int getCollapseX() {
         return (int) (mCollapsePoint * getMeasuredWidth());
     }
 

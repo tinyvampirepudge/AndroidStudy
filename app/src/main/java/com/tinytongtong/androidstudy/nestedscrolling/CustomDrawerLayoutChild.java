@@ -14,14 +14,13 @@ import androidx.core.view.ViewCompat;
 import com.tinytongtong.tinyutils.LogUtils;
 
 /**
- * @Description: 就是一个实现了 NestedScrollingChild 接口的 FrameLayout.
+ * @Description: 就是一个实现了 {@link NestedScrollingChild} 接口的 FrameLayout.
  * - 他自身并不能滚动，但能把 touch 事件传递给父容器（支持 nested scroll 的父容器）
- * - 这里主要用于作为 {@link CustomNestedScrollParent} 的直接子元素
+ * - 这里主要用于作为 {@link CustomDrawerLayoutParent} 的直接子元素
  * @Author wangjianzhou
  * @Date 2021/8/12 11:40 AM
  */
-public class CustomNestedScrollChildFrameLayout extends FrameLayout implements NestedScrollingChild {
-
+public class CustomDrawerLayoutChild extends FrameLayout implements NestedScrollingChild {
 
     private float mStartX = 0;
     private float mStartY = 0;
@@ -34,17 +33,17 @@ public class CustomNestedScrollChildFrameLayout extends FrameLayout implements N
     private NestedScrollingChildHelper mNestedChildHelper;
 
 
-    public CustomNestedScrollChildFrameLayout(Context context) {
+    public CustomDrawerLayoutChild(Context context) {
         super(context);
         init(context);
     }
 
-    public CustomNestedScrollChildFrameLayout(Context context, AttributeSet attrs) {
+    public CustomDrawerLayoutChild(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }
 
-    public CustomNestedScrollChildFrameLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public CustomDrawerLayoutChild(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }

@@ -27,18 +27,18 @@
             android:id="@+id/space"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="169"
             android:visibility="gone"
             tools:visibility="visible" />
 
-        <com.tinytongtong.androidstudy.nestedscrolling.CustomNestedScrollParent
+        <com.tinytongtong.androidstudy.nestedscrolling.CustomDrawerLayoutParent
             android:id="@+id/nested_scroll_parent"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="196"
             android:background="#00ffffff">
 
-            <com.tinytongtong.androidstudy.nestedscrolling.CustomNestedScrollChildFrameLayout
+            <com.tinytongtong.androidstudy.nestedscrolling.CustomDrawerLayoutChild
                 android:id="@+id/nested_scroll_child"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -64,9 +64,9 @@
                 </LinearLayout>
 
 
-            </com.tinytongtong.androidstudy.nestedscrolling.CustomNestedScrollChildFrameLayout>
+            </com.tinytongtong.androidstudy.nestedscrolling.CustomDrawerLayoutChild>
 
-        </com.tinytongtong.androidstudy.nestedscrolling.CustomNestedScrollParent>
+        </com.tinytongtong.androidstudy.nestedscrolling.CustomDrawerLayoutParent>
 
     </LinearLayout>
 
