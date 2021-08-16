@@ -1,15 +1,17 @@
 package com.tinytongtong.androidstudy.nestedscrolling;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewTreeObserver;
+import android.widget.Button;
+import android.widget.Space;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.tinytongtong.androidstudy.R;
 import com.tinytongtong.tinyutils.LogUtils;
-import com.tinytongtong.tinyutils.ScreenUtils;
 
 /**
  * @Description: NestedScrollingParent和NestedScrollingChild实现横向的抽屉效果
@@ -21,6 +23,7 @@ public class CustomNestedScrollActivity extends AppCompatActivity {
     private static final String TAG = CustomNestedScrollActivity.class.getSimpleName();
     private CustomNestedScrollParent nested_scroll_parent;
     private CustomNestedScrollChildFrameLayout nested_scroll_child;
+    private Space space;
 
     public static void actionStart(Context context) {
         Intent starter = new Intent(context, CustomNestedScrollActivity.class);
@@ -32,9 +35,39 @@ public class CustomNestedScrollActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_nested_scroll);
 
+        space = findViewById(R.id.space);
+
         nested_scroll_parent = findViewById(R.id.nested_scroll_parent);
         nested_scroll_child = findViewById(R.id.nested_scroll_child);
 
+        findViewById(R.id.btn_expand).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nested_scroll_parent.setPanelStatePrivate(CustomNestedScrollParent.STATE_EXPANDED);
+                nested_scroll_parent.setPanelState(CustomNestedScrollParent.STATE_EXPANDED, 0);
+            }
+        });
+        findViewById(R.id.btn_collapse).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nested_scroll_parent.setPanelStatePrivate(CustomNestedScrollParent.STATE_COLLAPSED);
+                nested_scroll_parent.setPanelState(CustomNestedScrollParent.STATE_COLLAPSED, 0);
+            }
+        });
+        findViewById(R.id.btn_width_match_parent).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                space.setVisibility(View.GONE);
+                refreshState();
+            }
+        });
+        findViewById(R.id.btn_width_match_half).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                space.setVisibility(View.VISIBLE);
+                refreshState();
+            }
+        });
 
         nested_scroll_parent.addPanelSlideListener(new CustomNestedScrollParent.SlideListener() {
             @Override
@@ -43,8 +76,6 @@ public class CustomNestedScrollActivity extends AppCompatActivity {
                     log("onStateChanged STATE_COLLAPSED");
                 } else if (newState == CustomNestedScrollParent.STATE_EXPANDED) {
                     log("onStateChanged STATE_EXPANDED");
-                } else if (newState == CustomNestedScrollParent.STATE_ANCHORED) {
-                    log("onStateChanged STATE_ANCHORED");
                 } else if (newState == CustomNestedScrollParent.STATE_SCROLLING) {
                     log("onStateChanged STATE_SCROLLING");
                 }
@@ -78,14 +109,11 @@ public class CustomNestedScrollActivity extends AppCompatActivity {
 //                nested_scroll_parent.setPanelState(CustomNestedScrollParent.STATE_EXPANDED, 0);
             }
         });
-
-//        resetPanelState();
     }
 
-    private void resetPanelState() {
-        log(String.format("resetPanelState"));
-        nested_scroll_parent.setPanelStatePrivate(CustomNestedScrollParent.STATE_ANCHORED);
-        nested_scroll_parent.setPanelState(CustomNestedScrollParent.STATE_ANCHORED, 0);
+    private void refreshState() {
+        nested_scroll_parent.setPanelStatePrivate(nested_scroll_parent.getPanelState());
+        nested_scroll_parent.setPanelState(nested_scroll_parent.getPanelState(), 0);
     }
 
     private void log(String s) {

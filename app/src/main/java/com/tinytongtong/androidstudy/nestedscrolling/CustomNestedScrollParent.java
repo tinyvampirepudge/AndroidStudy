@@ -33,19 +33,31 @@ import java.util.Arrays;
  */
 public class CustomNestedScrollParent extends FrameLayout implements NestedScrollingParent {
 
+    /**
+     * 展开状态
+     */
     public static final int STATE_EXPANDED = 0;
+    /**
+     * 收起状态
+     */
     public static final int STATE_COLLAPSED = 1;
-    public static final int STATE_ANCHORED = 2;
+    //    public static final int STATE_ANCHORED = 2;
+    /**
+     * 滑动状态
+     */
     public static final int STATE_SCROLLING = 4;
     public static final int STATE_SCROLL_DOWN_BOUND = 5; // 从属于STATE_SCROLLING态，代表往下滑到底部的时候再往下滑的状态
     public static final int STATE_SCROLL_TO_EXPANDED = 6;// 从属于STATE_SCROLLING态，代表往即将上滑
 
-    public static final float ANCHOR_POINT = 1 - 0.618f;
+    //    public static final float ANCHOR_POINT = 1 - 0.618f;
     public static final float COLLAPSE_POINT = 0.9f;
 
     public static final int DEFAULT_SCROLL_DURATION = 600;
 
-    private int mState = STATE_ANCHORED;
+    /**
+     * 默认状态
+     */
+    private int mState = STATE_EXPANDED;
 
     /**
      * 顶部阴影
@@ -63,7 +75,7 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
      */
     private boolean mIsDoingNestedScroll = false;
 
-    private float mAnchorPoint = ANCHOR_POINT;
+    //    private float mAnchorPoint = ANCHOR_POINT;
     private float mCollapsePoint = COLLAPSE_POINT;
 
     private SlideListener mListener;
@@ -88,13 +100,13 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
 
     private void init(Context context) {
         mScroller = new Scroller(context);
-        if (context instanceof Activity) {
-            int authorWidth = ScreenUtils.dip2px(context, 200);
-            int widowWidth = getWindowWidth((Activity) context);
-            float rateAnchor = (float) authorWidth / widowWidth;
-            mAnchorPoint = 1 - rateAnchor;
-            log(String.format("init authorWidth:%s, widowWidth:%s, mAnchorPoint:%s", authorWidth, widowWidth, mAnchorPoint));
-        }
+//        if (context instanceof Activity) {
+//            int authorWidth = ScreenUtils.dip2px(context, 200);
+//            int widowWidth = getWindowWidth((Activity) context);
+//            float rateAnchor = (float) authorWidth / widowWidth;
+//            mAnchorPoint = 1 - rateAnchor;
+//            log(String.format("init authorWidth:%s, widowWidth:%s, mAnchorPoint:%s", authorWidth, widowWidth, mAnchorPoint));
+//        }
 
         mShadowDrawable = context.getResources().getDrawable(R.drawable.bg_shadow_up_2);
 
@@ -151,7 +163,7 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
             setPanelStatePrivate(STATE_SCROLL_DOWN_BOUND);
             return;
         }
-        if ((mState == STATE_COLLAPSED || mState == STATE_ANCHORED || mState == STATE_SCROLL_TO_EXPANDED) && dx > 0) {
+        if ((mState == STATE_COLLAPSED || mState == STATE_SCROLL_TO_EXPANDED) && dx > 0) {
             setPanelStatePrivate(STATE_SCROLL_TO_EXPANDED);
             return;
         }
@@ -214,13 +226,6 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
         super.scrollTo(x, y);
     }
 
-    public float getStatePoint(int state) {
-        if (state == STATE_ANCHORED) {
-            return mAnchorPoint;
-        }
-        return mCollapsePoint;
-    }
-
     @Override
     public void computeScroll() {
 
@@ -235,13 +240,11 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
             }
             int finalX = mScroller.getFinalX();
             int width = this.getMeasuredWidth();
-            int anchorX = -(int) (mAnchorPoint * width);
+//            int anchorX = -(int) (mAnchorPoint * width);
             int collapseX = -(int) (mCollapsePoint * width);
 
             if (finalX == 0) {
                 setPanelStatePrivate(STATE_EXPANDED);
-            } else if (finalX == anchorX) {
-                setPanelStatePrivate(STATE_ANCHORED);
             } else if (finalX == collapseX) {
                 setPanelStatePrivate(STATE_COLLAPSED);
             }
@@ -256,32 +259,39 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
     private void onFingerReleased(float velX) {
 
         int currentX = getScrollX();
-        int anchorX = -(int) (mAnchorPoint * this.getMeasuredWidth());
+//        int anchorX = -(int) (mAnchorPoint * this.getMeasuredWidth());
         int collapseX = -(int) (mCollapsePoint * this.getMeasuredWidth());
 
-        log(String.format("onFingerReleased mAnchorPoint:%s, mCollapsePoint:%s, this.getMeasuredWidth():%s", mAnchorPoint, mCollapsePoint, this.getMeasuredWidth()));
-        log(String.format("onFingerReleased velX:%s, currentX:%s, anchorX:%s, collapseX:%s", velX, currentX, anchorX, collapseX));
+        log(String.format("onFingerReleased mCollapsePoint:%s, this.getMeasuredWidth():%s", mCollapsePoint, this.getMeasuredWidth()));
+        log(String.format("onFingerReleased velX:%s, currentX:%s, collapseX:%s", velX, currentX, collapseX));
 
         int targetState = STATE_EXPANDED;
 
         if (velX > 0) { // 向上滑
-            if (currentX > anchorX) {
-                targetState = STATE_EXPANDED;
-            } else {
-                targetState = STATE_ANCHORED;
-            }
+//            if (currentX > anchorX) {
+//                targetState = STATE_EXPANDED;
+//            } else {
+//                targetState = STATE_ANCHORED;
+//            }
+            targetState = STATE_EXPANDED;
         } else if (velX < 0) { // 向下滑
-            if (currentX < anchorX) {
-                targetState = STATE_COLLAPSED;
-            } else {
-                targetState = STATE_ANCHORED;
-            }
+//            if (currentX < anchorX) {
+//                targetState = STATE_COLLAPSED;
+//            } else {
+//                targetState = STATE_ANCHORED;
+//            }
+            targetState = STATE_COLLAPSED;
         } else {  // 没滑动
+//            if (currentX > anchorX / 2) {
+//                targetState = STATE_EXPANDED;
+//            } else if (currentX > (anchorX + collapseX) / 2) {
+//                targetState = STATE_ANCHORED;
+//            } else {
+//                targetState = STATE_COLLAPSED;
+//            }
 
-            if (currentX > anchorX / 2) {
+            if (currentX > collapseX / 2) {
                 targetState = STATE_EXPANDED;
-            } else if (currentX > (anchorX + collapseX) / 2) {
-                targetState = STATE_ANCHORED;
             } else {
                 targetState = STATE_COLLAPSED;
             }
@@ -302,8 +312,6 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
         int x = 0;
         if (state == STATE_EXPANDED) {
             x = 0;
-        } else if (state == STATE_ANCHORED) {
-            x = -(int) (mAnchorPoint * width);
         } else if (state == STATE_COLLAPSED) {
             x = -(int) (mCollapsePoint * width);
         } else {
@@ -332,23 +340,6 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
             }
         }
     }
-
-    /**
-     * just for test.
-     */
-    public static String stateString(int state) {
-        switch (state) {
-            case STATE_EXPANDED:
-                return "expanded";
-            case STATE_ANCHORED:
-                return "anchored";
-            case STATE_COLLAPSED:
-                return "collapsed";
-            default:
-                return "" + state;
-        }
-    }
-
 
     public interface SlideListener {
         void onStateChanged(int oldState, int newState);
@@ -386,14 +377,6 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
     }
 
 
-    public float getAnchorPoint() {
-        return mAnchorPoint;
-    }
-
-    public void setAnchorPoint(float point) {
-        this.mAnchorPoint = point;
-    }
-
     public float getCollapsePoint() {
         return mCollapsePoint;
     }
@@ -423,7 +406,9 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
 
     public void setPanelState(int state, int duration) {
         if (state == STATE_SCROLLING) {
-            throw new IllegalStateException("state error");
+            log(String.format("setPanelState state error return, state:%s, duration:%s", state, duration));
+            return;
+//            throw new IllegalStateException("state error");
         }
 
         final int width = this.getMeasuredWidth();
@@ -433,8 +418,7 @@ public class CustomNestedScrollParent extends FrameLayout implements NestedScrol
         }
 
         if (state == STATE_EXPANDED
-                || state == STATE_COLLAPSED
-                || state == STATE_ANCHORED) {
+                || state == STATE_COLLAPSED) {
             smoothScrollToState(state, duration);
         }
     }

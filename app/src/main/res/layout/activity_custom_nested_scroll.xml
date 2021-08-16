@@ -4,53 +4,102 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cardview_dark_background"
-    android:orientation="horizontal"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
     tools:context=".nestedscrolling.CustomNestedScrollActivity">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="50dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="100dp"
-        android:background="@color/background_info"
-        android:gravity="center"
-        android:text="我\n是\n标\n题" />
-
-    <com.tinytongtong.androidstudy.nestedscrolling.CustomNestedScrollParent
-        android:id="@+id/nested_scroll_parent"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_marginTop="100dp">
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal">
 
-        <com.tinytongtong.androidstudy.nestedscrolling.CustomNestedScrollChildFrameLayout
-            android:id="@+id/nested_scroll_child"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:background="@drawable/bg_top_radius_16"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp">
+            android:background="@color/background_info"
+            android:gravity="center"
+            android:text="我\n是\n标\n题" />
 
-            <!--      android:clickable="true" 必须添加，不然无法滑动      -->
-            <LinearLayout
+        <Space
+            android:id="@+id/space"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <com.tinytongtong.androidstudy.nestedscrolling.CustomNestedScrollParent
+            android:id="@+id/nested_scroll_parent"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#00ffffff">
+
+            <com.tinytongtong.androidstudy.nestedscrolling.CustomNestedScrollChildFrameLayout
+                android:id="@+id/nested_scroll_child"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:clickable="true"
-                android:orientation="vertical">
+                android:background="@drawable/bg_top_radius_16"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
 
-                <TextView
-                    android:id="@+id/tv_content"
+                <!--      android:clickable="true" 必须添加，不然无法滑动      -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/background_wtf"
-                    android:gravity="center"
-                    android:text="我是抽屉的内容_match_parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </LinearLayout>
+                    android:clickable="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/background_wtf"
+                        android:gravity="center"
+                        android:text="我是抽屉的内容_match_parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </LinearLayout>
 
 
-        </com.tinytongtong.androidstudy.nestedscrolling.CustomNestedScrollChildFrameLayout>
+            </com.tinytongtong.androidstudy.nestedscrolling.CustomNestedScrollChildFrameLayout>
 
-    </com.tinytongtong.androidstudy.nestedscrolling.CustomNestedScrollParent>
+        </com.tinytongtong.androidstudy.nestedscrolling.CustomNestedScrollParent>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_expand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="expand"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_collapse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="collapse"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_width_match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="width match_parent"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_width_match_half"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="width match_half"
+        android:textAllCaps="false" />
 
 </LinearLayout>
