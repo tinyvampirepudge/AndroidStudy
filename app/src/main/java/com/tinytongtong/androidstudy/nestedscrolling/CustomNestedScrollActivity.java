@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.Space;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -89,6 +90,19 @@ public class CustomNestedScrollActivity extends AppCompatActivity {
             @Override
             public void onScrollOffset(float slideOffset) {
                 log(String.format("onScrollOffset slideOffset:%s", slideOffset));
+            }
+        });
+
+        nested_scroll_parent.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                nested_scroll_parent.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+
+//                final float height = mDrawerParent.getMeasuredHeight();
+//                final float point = (height - DGCScreenUtil.dip2px(getContext(), 347F)) / height;
+
+                // 默认收起状态
+                nested_scroll_parent.setCollapseState();
             }
         });
     }

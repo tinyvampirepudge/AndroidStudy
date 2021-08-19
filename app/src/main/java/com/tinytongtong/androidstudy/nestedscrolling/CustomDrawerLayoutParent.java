@@ -392,7 +392,7 @@ public class CustomDrawerLayoutParent extends FrameLayout implements NestedScrol
      * @return
      */
     private int getExpandX() {
-        return (int) (mCollapsePoint * getMeasuredWidth());
+        return 0;
     }
 
     /**
