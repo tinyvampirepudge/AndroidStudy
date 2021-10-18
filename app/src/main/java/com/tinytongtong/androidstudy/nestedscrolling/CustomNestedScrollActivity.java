@@ -102,7 +102,7 @@ public class CustomNestedScrollActivity extends AppCompatActivity {
 //                final float point = (height - DGCScreenUtil.dip2px(getContext(), 347F)) / height;
 
                 // 默认收起状态
-                nested_scroll_parent.setCollapseState();
+//                nested_scroll_parent.setCollapseState();
             }
         });
     }
