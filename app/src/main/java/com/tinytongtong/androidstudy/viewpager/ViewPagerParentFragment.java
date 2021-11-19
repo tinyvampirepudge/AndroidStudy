@@ -14,7 +14,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.tinytongtong.androidstudy.R;
-import com.tinytongtong.androidstudy.viewpager.adapter.DemoCollectionPagerAdapter;
+import com.tinytongtong.androidstudy.viewpager.adapter.Viewpager2FragmentPagerAdapter;
 import com.tinytongtong.androidstudy.viewpager.model.TabBean;
 import com.tinytongtong.androidstudy.viewpager.model.TabBeanFactory;
 
@@ -45,7 +45,7 @@ public class ViewPagerParentFragment extends Fragment {
     private TabLayout tabLayout;
     private ImageView ivSetting;
     private ViewPager viewPager;
-    private DemoCollectionPagerAdapter pagerAdapter;
+    private Viewpager2FragmentPagerAdapter pagerAdapter;
 
     public ViewPagerParentFragment() {
         // Required empty public constructor
@@ -94,7 +94,7 @@ public class ViewPagerParentFragment extends Fragment {
         tabLayout = view.findViewById(R.id.tabLayout);
         ivSetting = view.findViewById(R.id.iv_setting);
         viewPager = view.findViewById(R.id.viewPager);
-        pagerAdapter = new DemoCollectionPagerAdapter(getChildFragmentManager());
+        pagerAdapter = new Viewpager2FragmentPagerAdapter(getChildFragmentManager());
         List<TabBean> tabBeanList = TabBeanFactory.getTabData();
         pagerAdapter.setList(tabBeanList);
         viewPager.setOffscreenPageLimit(tabBeanList.size() - 1);

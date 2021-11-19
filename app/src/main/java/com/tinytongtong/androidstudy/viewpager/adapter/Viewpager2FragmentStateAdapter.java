@@ -22,12 +22,12 @@ import java.util.List;
  * @Date 2021/1/22 11:40 AM
  * @Version
  */
-public class DemoCollectionAdapter extends FragmentStateAdapter {
+public class Viewpager2FragmentStateAdapter extends FragmentStateAdapter {
     private List<TabBean> list;
 
     private SparseArray<ViewPagerItemFragment> mFragments = new SparseArray<>();
 
-    public DemoCollectionAdapter(@NonNull Fragment fragment) {
+    public Viewpager2FragmentStateAdapter(@NonNull Fragment fragment) {
         super(fragment);
     }
 

@@ -2,7 +2,6 @@ package com.tinytongtong.androidstudy.viewpager;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.tinytongtong.androidstudy.R;
-import com.tinytongtong.androidstudy.viewpager.adapter.DemoCollectionAdapter;
+import com.tinytongtong.androidstudy.viewpager.adapter.Viewpager2FragmentStateAdapter;
 import com.tinytongtong.androidstudy.viewpager.model.TabBean;
 import com.tinytongtong.androidstudy.viewpager.model.TabBeanFactory;
 
@@ -48,7 +47,7 @@ public class ViewPager2ParentFragment extends Fragment {
     private TabLayout tabLayout;
     private ImageView ivSetting;
     private ViewPager2 viewPager2;
-    private DemoCollectionAdapter adapter;
+    private Viewpager2FragmentStateAdapter adapter;
 
     private int selectedPos = -1;
 
@@ -101,7 +100,7 @@ public class ViewPager2ParentFragment extends Fragment {
         tabLayout = view.findViewById(R.id.tabLayout);
         ivSetting = view.findViewById(R.id.iv_setting);
         viewPager2 = view.findViewById(R.id.viewPager2);
-        adapter = new DemoCollectionAdapter(this);
+        adapter = new Viewpager2FragmentStateAdapter(this);
         List<TabBean> tabBeanList = TabBeanFactory.getTabData();
         adapter.setList(tabBeanList);
         viewPager2.setOffscreenPageLimit(tabBeanList.size() - 1);
