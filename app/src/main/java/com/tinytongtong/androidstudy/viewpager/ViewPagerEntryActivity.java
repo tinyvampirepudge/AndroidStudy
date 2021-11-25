@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.tinytongtong.androidstudy.R;
+import com.tinytongtong.androidstudy.viewpager.viewpager2.ViewPager2FragmentPagerAdapterActivity;
 
 /**
  * @Description: viewpager和viewpager2

@@ -21,10 +21,10 @@ import java.util.List;
  * @Date 2021/1/22 10:15 AM
  * @Version
  */
-public class Viewpager2FragmentPagerAdapter extends FragmentPagerAdapter {
+public class ViewpagerFragmentPagerAdapter extends FragmentPagerAdapter {
     private List<TabBean> list;
 
-    public Viewpager2FragmentPagerAdapter(@NonNull FragmentManager fm) {
+    public ViewpagerFragmentPagerAdapter(@NonNull FragmentManager fm) {
         super(fm);
     }
 

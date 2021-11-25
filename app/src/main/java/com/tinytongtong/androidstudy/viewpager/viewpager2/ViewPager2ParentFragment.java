@@ -1,4 +1,4 @@
-package com.tinytongtong.androidstudy.viewpager;
+package com.tinytongtong.androidstudy.viewpager.viewpager2;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -16,7 +16,8 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.tinytongtong.androidstudy.R;
-import com.tinytongtong.androidstudy.viewpager.adapter.Viewpager2FragmentStateAdapter;
+import com.tinytongtong.androidstudy.viewpager.ViewPagerItemFragment;
+import com.tinytongtong.androidstudy.viewpager.ViewPagerParentFragment;
 import com.tinytongtong.androidstudy.viewpager.model.TabBean;
 import com.tinytongtong.androidstudy.viewpager.model.TabBeanFactory;
 

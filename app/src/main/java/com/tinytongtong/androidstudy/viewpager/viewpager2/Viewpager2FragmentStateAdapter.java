@@ -1,4 +1,4 @@
-package com.tinytongtong.androidstudy.viewpager.adapter;
+package com.tinytongtong.androidstudy.viewpager.viewpager2;
 
 import android.util.Log;
 import android.util.SparseArray;

@@ -1,4 +1,4 @@
-package com.tinytongtong.androidstudy.viewpager;
+package com.tinytongtong.androidstudy.viewpager.viewpager2;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
