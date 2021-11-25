@@ -14,4 +14,12 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/btn_nest_recyclerview"
+        style="@style/btn_style_lower"
+        android:text="RecyclerView嵌套RecyclerView测试"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_adapter_onCreateViewHolder" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

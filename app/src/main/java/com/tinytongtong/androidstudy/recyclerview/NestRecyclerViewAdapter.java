@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tinytongtong.androidstudy.R;
@@ -15,35 +16,26 @@ import com.tinytongtong.androidstudy.R;
 import java.util.List;
 
 /**
- * @Description:
+ * @Description: RecyclerView嵌套RecyclerView测试
  * @Author tinytongtong
- * @Date 2021/2/28 9:14 PM
+ * @Date 2021/11/25 9:44 AM
  * @Version
  */
-public class OnCreateViewHolderAdapter extends RecyclerView.Adapter<OnCreateViewHolderAdapter.ViewHolder> {
-    private static final String TAG = "Adapter-Adapter";
+public class NestRecyclerViewAdapter extends RecyclerView.Adapter<NestRecyclerViewAdapter.ViewHolder> {
+    private static final String TAG = "Adapter-Nest";
 
     private Context mContext;
-    private List<PersonBean> mList;
+    private List<List<PersonBean>> mList;
 
-    public OnCreateViewHolderAdapter(Context mContext) {
-        this.mContext = mContext;
-    }
-
-    public OnCreateViewHolderAdapter(Context mContext, List<PersonBean> mList) {
+    public NestRecyclerViewAdapter(Context mContext, List<List<PersonBean>> mList) {
         this.mContext = mContext;
         this.mList = mList;
-    }
-
-    public void updateData(List<PersonBean> mList){
-        this.mList = mList;
-        notifyDataSetChanged();
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(mContext).inflate(R.layout.adapter_recyclerview, parent, false);
+        View itemView = LayoutInflater.from(mContext).inflate(R.layout.adapter_recyclerview_nest, parent, false);
         ViewHolder vh = new ViewHolder(itemView);
         Log.e(TAG, String.format("onCreateViewHolder vh:%h", vh.hashCode()));
         return vh;
@@ -52,9 +44,8 @@ public class OnCreateViewHolderAdapter extends RecyclerView.Adapter<OnCreateView
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.e(TAG, String.format("onBindViewHolder position:%s, holder:%h", position, holder.hashCode()));
-        PersonBean bean = mList.get(position);
-        holder.tvName.setText(bean.getName());
-        holder.tvAge.setText(String.valueOf(bean.getAge()));
+        List<PersonBean> list = mList.get(position);
+        holder.mAdapter.updateData(list);
     }
 
     @Override
@@ -69,13 +60,15 @@ public class OnCreateViewHolderAdapter extends RecyclerView.Adapter<OnCreateView
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
-        private final TextView tvName;
-        private final TextView tvAge;
+        private final RecyclerView nestRv;
+        private OnCreateViewHolderAdapter mAdapter;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvName = itemView.findViewById(R.id.tv_name);
-            tvAge = itemView.findViewById(R.id.tv_age);
+            nestRv = itemView.findViewById(R.id.nest_recyclerView);
+            mAdapter = new OnCreateViewHolderAdapter(itemView.getContext());
+            nestRv.setLayoutManager(new LinearLayoutManager(itemView.getContext()));
+            nestRv.setAdapter(mAdapter);
         }
     }
 }

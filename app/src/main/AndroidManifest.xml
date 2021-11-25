@@ -20,6 +20,7 @@
         <activity android:name=".activity.AActivity" />
         <activity android:name=".bitmap.crop.BitmapCropActivity" />
         <activity android:name=".anim.breath.BreathAnimActivity" />
+        <activity android:name=".recyclerview.RecyclerViewNestTestActivity" />
         <activity android:name=".recyclerview.AdapterOnCreateViewHolderTestActivity" />
         <activity android:name=".recyclerview.RecyclerViewEntryActivity" />
         <activity android:name=".viewpager.ViewPager2FragmentPagerAdapterActivity" />

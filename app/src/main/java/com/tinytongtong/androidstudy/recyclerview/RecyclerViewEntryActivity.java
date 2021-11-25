@@ -27,5 +27,7 @@ public class RecyclerViewEntryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recycler_view_entry);
 
         findViewById(R.id.btn_adapter_onCreateViewHolder).setOnClickListener(v -> AdapterOnCreateViewHolderTestActivity.actionStart(RecyclerViewEntryActivity.this));
+
+        findViewById(R.id.btn_nest_recyclerview).setOnClickListener(v -> RecyclerViewNestTestActivity.actionStart(RecyclerViewEntryActivity.this));
     }
 }
