@@ -20,6 +20,7 @@ import com.tinytongtong.androidstudy.viewpager.ViewPagerItemFragment;
 import com.tinytongtong.androidstudy.viewpager.ViewPagerParentFragment;
 import com.tinytongtong.androidstudy.viewpager.model.TabBean;
 import com.tinytongtong.androidstudy.viewpager.model.TabBeanFactory;
+import com.tinytongtong.androidstudy.viewpager.viewpager2.adapter.Viewpager2FragmentStateAdapter;
 
 import java.util.List;
 

@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import com.tinytongtong.androidstudy.R;
 import com.tinytongtong.androidstudy.viewpager.viewpager2.ViewPager2FragmentPagerAdapterActivity;
+import com.tinytongtong.androidstudy.viewpager.viewpager2.ViewPager2ViewsActivity;
 
 /**
  * @Description: viewpager和viewpager2
@@ -32,5 +33,8 @@ public class ViewPagerEntryActivity extends AppCompatActivity {
 
         findViewById(R.id.btnViewPager2Test).setOnClickListener(
                 v -> ViewPager2FragmentPagerAdapterActivity.actionStart(this));
+
+        findViewById(R.id.btnViewPager2ViewTest).setOnClickListener(
+                v -> ViewPager2ViewsActivity.actionStart(this));
     }
 }
