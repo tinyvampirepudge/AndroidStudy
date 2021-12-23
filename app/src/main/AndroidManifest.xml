@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".constraintlayout.ConstraintLayoutTestActivity"
+            android:exported="false" />
         <activity android:name=".nestedscrolling.CustomNestedScrollActivity" />
         <activity android:name=".componentcallbacks.ComponentCallbacksActivity" />
         <activity android:name=".activity.BActivity" />
