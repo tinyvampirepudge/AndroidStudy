@@ -1,17 +1,13 @@
 package com.tinytongtong.androidstudy.constraintlayout
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.tinytongtong.androidstudy.R
-import com.tinytongtong.androidstudy.utils.LogUtil
-import com.tinytongtong.tinyutils.LogUtils
 import com.tinytongtong.tinyutils.ScreenUtils
 import kotlinx.android.synthetic.main.activity_constraint_layout_test.*
-import kotlin.math.log
 
 /**
  * @Description: ConstraintLayout相关测试
