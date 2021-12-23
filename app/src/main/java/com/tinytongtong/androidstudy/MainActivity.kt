@@ -21,6 +21,7 @@ import com.tinytongtong.androidstudy.framework.chapter901.TransactionTooLargeExc
 import com.tinytongtong.androidstudy.glide.GlideTestActivity
 import com.tinytongtong.androidstudy.handler.HandlerTestActivity
 import com.tinytongtong.androidstudy.jsonparse.JsonParseTestActivity
+import com.tinytongtong.androidstudy.launchmode.SingleTaskTestActivity
 import com.tinytongtong.androidstudy.nestedscrolling.CustomNestedScrollActivity
 import com.tinytongtong.androidstudy.recyclerview.RecyclerViewEntryActivity
 import com.tinytongtong.androidstudy.rxjava.RxJavaActivity
@@ -150,6 +151,11 @@ class MainActivity : AppCompatActivity() {
         // ConstraintLayout
         btn_constraint_layout.setOnClickListener {
             startActivity(Intent(this, ConstraintLayoutTestActivity::class.java))
+        }
+
+        // SingleTask
+        btn_single_task.setOnClickListener {
+            startActivity(Intent(this, SingleTaskTestActivity::class.java))
         }
     }
 }

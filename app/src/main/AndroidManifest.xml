@@ -15,6 +15,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".launchmode.SingleTaskTest2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".launchmode.SingleTaskTestActivity"
+            android:exported="false"
+            android:launchMode="singleTask" />
+        <activity
             android:name=".constraintlayout.ConstraintLayoutTestActivity"
             android:exported="false" />
         <activity android:name=".nestedscrolling.CustomNestedScrollActivity" />
