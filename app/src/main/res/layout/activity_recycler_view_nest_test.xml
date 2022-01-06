@@ -6,9 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".recyclerview.AdapterOnCreateViewHolderTestActivity">
 
+    <Button
+        android:id="@+id/btn_show_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="show/hide rv"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_refresh_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="refresh rv data"
+        app:layout_constraintTop_toBottomOf="@id/btn_show_rv" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_refresh_rv" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

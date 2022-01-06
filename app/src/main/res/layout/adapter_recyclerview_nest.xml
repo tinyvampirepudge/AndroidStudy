@@ -4,10 +4,74 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <androidx.recyclerview.widget.RecyclerView
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/nest_recyclerView"
+    <Button
+        android:id="@+id/btn_show_view1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#C8EDC6"
+        android:text="show view1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_show_view2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#C8EDC6"
+        android:text="show view2"
+        app:layout_constraintTop_toBottomOf="@id/btn_show_view1" />
+
+    <Button
+        android:id="@+id/btn_refresh_view1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#C8EDC6"
+        android:text="refresh view1"
+        app:layout_constraintTop_toBottomOf="@id/btn_show_view2" />
+
+    <Button
+        android:id="@+id/btn_refresh_view2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#C8EDC6"
+        android:text="refresh view2"
+        app:layout_constraintTop_toBottomOf="@id/btn_refresh_view1" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/nest_container1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/btn_refresh_view2">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/nest_recyclerView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/nest_container2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2300FD"
+        android:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@id/btn_refresh_view2">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/nest_recyclerView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
