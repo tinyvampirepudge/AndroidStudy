@@ -4,19 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".measure.LinearLayoutTestActivity">
+    tools:context=".measure.ConstraintLayoutTest1Activity">
 
-    <com.tinytongtong.androidstudy.measure.view.CustomLinearLayout
+    <com.tinytongtong.androidstudy.measure.view.CustomConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".measure.LinearLayoutTestActivity">
+        android:layout_height="match_parent">
 
         <com.tinytongtong.androidstudy.measure.view.CustomSingleView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@color/colorPrimaryDark" />
+            android:background="@color/colorAccent" />
 
-    </com.tinytongtong.androidstudy.measure.view.CustomLinearLayout>
+    </com.tinytongtong.androidstudy.measure.view.CustomConstraintLayout>
 
 </LinearLayout>

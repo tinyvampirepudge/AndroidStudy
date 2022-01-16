@@ -46,5 +46,12 @@ public class MeasureLayoutDrawEntryActivity extends AppCompatActivity {
                 FrameLayoutTestActivity.actionStart(MeasureLayoutDrawEntryActivity.this);
             }
         });
+
+        findViewById(R.id.btn_constraint_layout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ConstraintLayoutTest1Activity.actionStart(MeasureLayoutDrawEntryActivity.this);
+            }
+        });
     }
 }
