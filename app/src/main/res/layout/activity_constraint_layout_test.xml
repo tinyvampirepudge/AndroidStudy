@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".constraintlayout.ConstraintLayoutTestActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@color/background_info"
+        android:gravity="center"
+        android:text="background"
+        android:textAllCaps="true"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="600dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/top_tv"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/background_error"
+            android:gravity="center"
+            android:text="background"
+            android:textAllCaps="true"
+            app:layout_constraintBottom_toTopOf="@id/mid_tv"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/mid_tv"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="10dp"
+            android:background="@color/background_debug"
+            android:gravity="center"
+            android:minHeight="100dp"
+            android:text="中间"
+            app:layout_constraintBottom_toTopOf="@id/placeholder"
+            app:layout_constraintTop_toBottomOf="@id/top_tv" />
+
+        <View
+            android:id="@+id/placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/bottom_btn"
+            app:layout_constraintTop_toBottomOf="@id/mid_tv"
+            app:layout_constraintVertical_weight="1" />
+
+        <Button
+            android:id="@+id/bottom_btn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="button"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

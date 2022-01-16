@@ -12,6 +12,7 @@ import com.tinytongtong.androidstudy.anim.ActivityAnimActivity
 import com.tinytongtong.androidstudy.anim.breath.BreathAnimActivity
 import com.tinytongtong.androidstudy.bitmap.BitmapEntryActivity
 import com.tinytongtong.androidstudy.componentcallbacks.ComponentCallbacksActivity
+import com.tinytongtong.androidstudy.constraintlayout.ConstraintLayoutTestActivity
 import com.tinytongtong.androidstudy.dialog.DialogWithVariousCtxActivity
 import com.tinytongtong.androidstudy.draw.CustomViewGroupActivity
 import com.tinytongtong.androidstudy.drawflow.ViewFlowActivity
@@ -20,6 +21,7 @@ import com.tinytongtong.androidstudy.framework.chapter901.TransactionTooLargeExc
 import com.tinytongtong.androidstudy.glide.GlideTestActivity
 import com.tinytongtong.androidstudy.handler.HandlerTestActivity
 import com.tinytongtong.androidstudy.jsonparse.JsonParseTestActivity
+import com.tinytongtong.androidstudy.launchmode.SingleTaskTestActivity
 import com.tinytongtong.androidstudy.measure.MeasureLayoutDrawEntryActivity
 import com.tinytongtong.androidstudy.nestedscrolling.CustomNestedScrollActivity
 import com.tinytongtong.androidstudy.recyclerview.RecyclerViewEntryActivity
@@ -145,6 +147,16 @@ class MainActivity : AppCompatActivity() {
         // NestedScroll组件实现横向抽屉效果
         btn_nested_scroll.setOnClickListener {
             CustomNestedScrollActivity.actionStart(this)
+        }
+
+        // ConstraintLayout
+        btn_constraint_layout.setOnClickListener {
+            startActivity(Intent(this, ConstraintLayoutTestActivity::class.java))
+        }
+
+        // SingleTask
+        btn_single_task.setOnClickListener {
+            startActivity(Intent(this, SingleTaskTestActivity::class.java))
         }
 
         // Measure绘制流程
