@@ -7,13 +7,37 @@
     tools:context=".measure.FrameLayoutTestActivity">
 
     <com.tinytongtong.androidstudy.measure.view.CustomFrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#BCEAC0"
+        android:measureAllChildren="true">
 
         <com.tinytongtong.androidstudy.measure.view.CustomSingleView
-            android:layout_width="100dp"
+            android:layout_width="200dp"
             android:layout_height="100dp"
             android:background="@color/colorAccent" />
+
+        <com.tinytongtong.androidstudy.measure.view.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="100dp"
+            android:gravity="center"
+            android:elevation=""
+            android:text="match_parent" />
+
+        <com.tinytongtong.androidstudy.measure.view.CustomButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="100dp"
+            android:text="wrap_content"
+            android:visibility="visible" />
+
+        <com.tinytongtong.androidstudy.measure.view.CustomImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="300dp"
+            android:background="@drawable/ic_launcher"
+            android:contentDescription="wrap_content" />
 
     </com.tinytongtong.androidstudy.measure.view.CustomFrameLayout>
 
