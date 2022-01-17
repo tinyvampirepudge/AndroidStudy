@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".measure.MeasureLayoutDrawEntryActivity">
+
+    <Button
+        android:id="@+id/btn_linear_layout"
+        style="@style/btn_style_lower"
+        android:text="LinearLayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_relative_layout"
+        style="@style/btn_style_lower"
+        android:text="RelativeLayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_linear_layout" />
+
+    <Button
+        android:id="@+id/btn_frame_layout"
+        style="@style/btn_style_lower"
+        android:text="FrameLayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_relative_layout" />
+
+    <Button
+        android:id="@+id/btn_constraint_layout"
+        style="@style/btn_style_lower"
+        android:text="ConstraintLayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_frame_layout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

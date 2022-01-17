@@ -218,6 +218,13 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_constraint_layout" />
 
+        <Button
+            android:id="@+id/btn_measure_traversal"
+            style="@style/btn_style_lower"
+            android:text="Measure绘制流程"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_single_task" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>
