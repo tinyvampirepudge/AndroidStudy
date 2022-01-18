@@ -17,5 +17,11 @@ public class ForEachTest {
         for (String item : arrayList) {
             System.out.println(item);
         }
+
+        arrayList.add("333");
+
+        for (String item : arrayList) {
+            System.out.println(item);
+        }
     }
 }

@@ -40,10 +40,28 @@ public class RecyclerViewNestTestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler_view_nest_test);
 
-        mAdapter = new NestRecyclerViewAdapter(this, genListData(20));
+        mAdapter = new NestRecyclerViewAdapter(this);
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mAdapter);
+
+        findViewById(R.id.btn_show_rv).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean show = mRecyclerView.getVisibility() == View.VISIBLE;
+                if (show) {
+                    mRecyclerView.setVisibility(View.GONE);
+                } else {
+                    mRecyclerView.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        findViewById(R.id.btn_refresh_rv).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAdapter.updateData(genListData(20));
+            }
+        });
     }
 
     private List<List<PersonBean>> genListData(int size) {

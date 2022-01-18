@@ -35,7 +35,7 @@ public class OnCreateViewHolderAdapter extends RecyclerView.Adapter<OnCreateView
         this.mList = mList;
     }
 
-    public void updateData(List<PersonBean> mList){
+    public void updateData(List<PersonBean> mList) {
         this.mList = mList;
         notifyDataSetChanged();
     }
