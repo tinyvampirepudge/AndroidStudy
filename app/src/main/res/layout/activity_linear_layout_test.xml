@@ -9,13 +9,35 @@
 
     <com.tinytongtong.androidstudy.measure.view.CustomLinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         tools:context=".measure.LinearLayoutTestActivity">
 
         <com.tinytongtong.androidstudy.measure.view.CustomSingleView
-            android:layout_width="100dp"
+            android:layout_width="200dp"
             android:layout_height="100dp"
             android:background="@color/colorPrimaryDark" />
+
+        <com.tinytongtong.androidstudy.measure.view.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#99dddddd"
+            android:gravity="center"
+            android:text="match_parent" />
+
+        <com.tinytongtong.androidstudy.measure.view.CustomButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="wrap_content" />
+
+        <com.tinytongtong.androidstudy.measure.view.CustomImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:background="@drawable/ic_launcher"
+            android:contentDescription="wrap_content" />
 
     </com.tinytongtong.androidstudy.measure.view.CustomLinearLayout>
 

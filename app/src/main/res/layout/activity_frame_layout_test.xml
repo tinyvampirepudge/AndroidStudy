@@ -22,7 +22,6 @@
             android:layout_height="match_parent"
             android:layout_marginTop="100dp"
             android:gravity="center"
-            android:elevation=""
             android:text="match_parent" />
 
         <com.tinytongtong.androidstudy.measure.view.CustomButton

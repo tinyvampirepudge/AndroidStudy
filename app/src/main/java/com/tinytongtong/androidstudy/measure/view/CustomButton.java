@@ -11,7 +11,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageView;
 
 public class CustomButton extends AppCompatButton {
-    private static final String TAG = "CustomLayout-Buttom";
+    private static final String TAG = "CustomLayout-Button";
 
 
     public CustomButton(Context context) {
