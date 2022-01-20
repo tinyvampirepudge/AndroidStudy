@@ -11,7 +11,6 @@ import androidx.appcompat.widget.AppCompatCheckBox;
 public class CustomCheckBox extends AppCompatCheckBox {
     private static final String TAG = "CustomLayout-CheckBox";
 
-
     public CustomCheckBox(Context context) {
         super(context);
     }
