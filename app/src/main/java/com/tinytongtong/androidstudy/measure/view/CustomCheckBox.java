@@ -4,25 +4,23 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.widget.Button;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatCheckBox;
 
-public class CustomButton extends AppCompatButton {
-    private static final String TAG = "CustomLayout-Button";
+public class CustomCheckBox extends AppCompatCheckBox {
+    private static final String TAG = "CustomLayout-CheckBox";
 
 
-    public CustomButton(Context context) {
+    public CustomCheckBox(Context context) {
         super(context);
     }
 
-    public CustomButton(Context context, @Nullable AttributeSet attrs) {
+    public CustomCheckBox(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public CustomButton(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public CustomCheckBox(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

@@ -11,9 +11,42 @@
         android:layout_height="match_parent">
 
         <com.tinytongtong.androidstudy.measure.view.CustomSingleView
-            android:layout_width="100dp"
+            android:id="@+id/view1"
+            android:layout_width="200dp"
             android:layout_height="100dp"
-            android:background="@color/colorPrimary" />
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimaryDark" />
+
+        <com.tinytongtong.androidstudy.measure.view.CustomTextView
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#99dddddd"
+            android:text="match_parent" />
+
+        <com.tinytongtong.androidstudy.measure.view.CustomButton
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/view1"
+            android:text="wrap_content" />
+
+        <com.tinytongtong.androidstudy.measure.view.CustomImageView
+            android:id="@+id/view4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignLeft="@id/view5"
+            android:background="@drawable/ic_launcher"
+            android:contentDescription="wrap_content" />
+
+        <com.tinytongtong.androidstudy.measure.view.CustomCheckBox
+            android:id="@+id/view5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/ic_launcher"
+            android:contentDescription="wrap_content" />
 
     </com.tinytongtong.androidstudy.measure.view.CustomRelativeLayout>
 
