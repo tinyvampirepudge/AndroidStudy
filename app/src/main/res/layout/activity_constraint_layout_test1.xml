@@ -11,9 +11,99 @@
         android:layout_height="match_parent">
 
         <com.tinytongtong.androidstudy.measure.view.CustomSingleView
+            android:id="@+id/view1"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@color/colorAccent" />
+            android:background="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.tinytongtong.androidstudy.measure.view.CustomTextView
+            android:id="@+id/view2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="我是文本我是文本我是文本"
+            android:textColor="#FDA413"
+            android:textSize="12sp"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/view3"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.tinytongtong.androidstudy.measure.view.CustomImageView
+            android:id="@+id/view3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_birthday_cake"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/view2"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="44dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="44dp" />
+
+        <com.tinytongtong.androidstudy.measure.view.CustomButton
+            android:id="@+id/view4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:text="猫了个咪啊"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/guideline1"
+            app:layout_constraintRight_toRightOf="@id/guideline2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.tinytongtong.androidstudy.measure.view.CustomLinearLayout
+            android:id="@+id/view5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background_debug"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <com.tinytongtong.androidstudy.measure.view.CustomRelativeLayout
+            android:id="@+id/view6"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/background_info"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <com.tinytongtong.androidstudy.measure.view.CustomFrameLayout
+            android:id="@+id/view7"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/background_wtf"
+            android:minWidth="50dp"
+            android:minHeight="50dp"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintLeft_toLeftOf="@id/view1"
+            app:layout_constraintRight_toRightOf="@id/view1"
+            app:layout_constraintTop_toBottomOf="@+id/view1" />
 
     </com.tinytongtong.androidstudy.measure.view.CustomConstraintLayout>
 
