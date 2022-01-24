@@ -4,27 +4,27 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.View;
 
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
-public class CustomConstraintLayout extends ConstraintLayout {
-    private static final String TAG = "CustomLayout-Constraint";
+public class CustomHelloView extends View {
+    private static final String TAG = "CustomLayout-HelloView";
 
 
-    public CustomConstraintLayout(Context context) {
+    public CustomHelloView(Context context) {
         super(context);
     }
 
-    public CustomConstraintLayout(Context context, @Nullable AttributeSet attrs) {
+    public CustomHelloView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public CustomConstraintLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public CustomHelloView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
-    public CustomConstraintLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public CustomHelloView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 

@@ -7,13 +7,54 @@
     tools:context=".measure.RelativeLayoutTestActivity">
 
     <com.tinytongtong.androidstudy.measure.view.CustomRelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <com.tinytongtong.androidstudy.measure.view.CustomSingleView
-            android:layout_width="100dp"
+            android:id="@+id/view1"
+            android:layout_width="200dp"
             android:layout_height="100dp"
-            android:background="@color/colorPrimary" />
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimaryDark" />
+
+        <com.tinytongtong.androidstudy.measure.view.CustomTextView
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#99dddddd"
+            android:text="match_parent" />
+
+        <com.tinytongtong.androidstudy.measure.view.CustomButton
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/view5"
+            android:text="wrap_content" />
+
+        <com.tinytongtong.androidstudy.measure.view.CustomImageView
+            android:id="@+id/view4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@id/view5"
+            android:background="@drawable/ic_launcher"
+            android:contentDescription="wrap_content" />
+
+        <com.tinytongtong.androidstudy.measure.view.CustomHelloView
+            android:id="@+id/view5"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:background="@color/background_debug" />
+
+        <com.tinytongtong.androidstudy.measure.view.CustomWorldView
+            android:id="@+id/view6"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/view5"
+            android:layout_centerHorizontal="true"
+            android:background="@color/background_info"
+            android:gravity="center" />
 
     </com.tinytongtong.androidstudy.measure.view.CustomRelativeLayout>
 
