@@ -38,4 +38,12 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_frame_layout" />
 
+    <Button
+        android:id="@+id/btn_dispatch_attach_info"
+        style="@style/btn_style_lower"
+        android:text="dispatch attachInfo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_constraint_layout" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

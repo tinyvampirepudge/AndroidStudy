@@ -14,7 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".measure.ConstraintLayoutTest1Activity"></activity>
+        <activity
+            android:name=".measure.DispatchAttachInfoTestActivity"
+            android:exported="false" />
+        <activity android:name=".measure.ConstraintLayoutTest1Activity" />
         <activity
             android:name=".launchmode.SingleTaskTest2Activity"
             android:exported="false" />
