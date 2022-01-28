@@ -54,4 +54,12 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_dispatch_attach_info" />
 
+    <Button
+        android:id="@+id/btn_invalidate"
+        style="@style/btn_style_lower"
+        android:text="invalidate"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_request_layout" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

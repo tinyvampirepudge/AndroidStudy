@@ -67,5 +67,12 @@ public class MeasureLayoutDrawEntryActivity extends AppCompatActivity {
                 RequestLayoutTestActivity.actionStart(MeasureLayoutDrawEntryActivity.this);
             }
         });
+
+        findViewById(R.id.btn_invalidate).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InvalidateTestActivity.actionStart(MeasureLayoutDrawEntryActivity.this);
+            }
+        });
     }
 }
