@@ -52,4 +52,9 @@ public class CustomFrameLayout extends FrameLayout {
         super.onDraw(canvas);
         Log.e(TAG, "onDraw");
     }
+
+    @Override
+    protected void dispatchDraw(Canvas canvas) {
+        super.dispatchDraw(canvas);
+    }
 }

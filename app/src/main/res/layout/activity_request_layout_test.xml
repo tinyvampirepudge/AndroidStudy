@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".measure.RequestLayoutTestActivity">
 
-    <com.tinytongtong.androidstudy.measure.view.CustomRelativeLayout
+    <com.tinytongtong.androidstudy.measure.view.CustomFrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -31,11 +31,11 @@
             android:id="@+id/view3"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_alignParentRight="true" />
+            android:layout_gravity="right" />
 
-    </com.tinytongtong.androidstudy.measure.view.CustomRelativeLayout>
+    </com.tinytongtong.androidstudy.measure.view.CustomFrameLayout>
 
-    <com.tinytongtong.androidstudy.measure.view.CustomFrameLayout
+    <com.tinytongtong.androidstudy.measure.view.CustomRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp">
@@ -51,6 +51,6 @@
             android:layout_gravity="right"
             android:background="@color/background_info" />
 
-    </com.tinytongtong.androidstudy.measure.view.CustomFrameLayout>
+    </com.tinytongtong.androidstudy.measure.view.CustomRelativeLayout>
 
 </com.tinytongtong.androidstudy.measure.view.CustomLinearLayout>
