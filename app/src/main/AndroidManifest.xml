@@ -15,6 +15,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".measure.MeasureInvokeTestActivity"
+            android:exported="false" />
+        <activity
             android:name=".measure.InvalidateTestActivity"
             android:exported="false" />
         <activity

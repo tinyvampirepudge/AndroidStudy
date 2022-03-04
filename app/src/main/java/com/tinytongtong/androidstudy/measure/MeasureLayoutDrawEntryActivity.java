@@ -26,6 +26,14 @@ public class MeasureLayoutDrawEntryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_measure_layout_draw_entry);
 
+        // 进入Activity后，连续调用两次绘制流程
+        findViewById(R.id.btn_enter_activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MeasureInvokeTestActivity.actionStart(MeasureLayoutDrawEntryActivity.this);
+            }
+        });
+
         findViewById(R.id.btn_linear_layout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
