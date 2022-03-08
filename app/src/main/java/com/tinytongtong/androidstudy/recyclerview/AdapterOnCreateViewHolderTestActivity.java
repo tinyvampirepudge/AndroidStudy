@@ -47,12 +47,12 @@ public class AdapterOnCreateViewHolderTestActivity extends AppCompatActivity {
                     Log.e(TAG, "模拟两次刷新页面");
                     // 模拟两次刷新页面
                     mAdapter.notifyDataSetChanged();
-                    mHandler.postDelayed(() -> mAdapter.notifyDataSetChanged(), 200);
+//                    mHandler.postDelayed(() -> mAdapter.notifyDataSetChanged(), 200);
                 }
             }
         });
         mAdapter = new OnCreateViewHolderAdapter(this, genListData(20));
-        mAdapter.setHasStableIds(true);
+//        mAdapter.setHasStableIds(true);
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mAdapter);
