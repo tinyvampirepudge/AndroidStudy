@@ -40,6 +40,22 @@ public class OnCreateViewHolderAdapter extends RecyclerView.Adapter<OnCreateView
         notifyDataSetChanged();
     }
 
+    /**
+     * 增加数据
+     */
+    public void addData(int position, PersonBean personBean) {
+        mList.add(position, personBean);
+        notifyItemInserted(position);//注意这里
+    }
+
+    /**
+     * 移除数据
+     */
+    public void removeData(int position) {
+        mList.remove(position);
+        notifyItemRemoved(position);//注意这里
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

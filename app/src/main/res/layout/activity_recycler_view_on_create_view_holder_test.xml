@@ -10,15 +10,43 @@
         android:id="@+id/btn_notifyDataChanged"
         style="@style/btn_style_lower"
         android:text="notifyDataChanged twice"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_notifyItemChanged"
+        style="@style/btn_style_lower"
+        android:text="notifyItemChanged"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_notifyDataChanged" />
+
+    <Button
+        android:id="@+id/btn_add"
+        style="@style/btn_style_lower"
+        android:text="add"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_notifyItemChanged" />
+
+    <Button
+        android:id="@+id/btn_remove"
+        style="@style/btn_style_lower"
+        android:text="remove"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_add" />
 
     <com.tinytongtong.androidstudy.recyclerview.CustomRecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_notifyDataChanged" />
 
+        app:layout_constraintTop_toBottomOf="@+id/btn_remove" />
 </androidx.constraintlayout.widget.ConstraintLayout>
