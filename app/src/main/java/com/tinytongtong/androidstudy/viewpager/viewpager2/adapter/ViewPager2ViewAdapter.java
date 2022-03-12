@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * @Description:
- * @Author wangjianzhou@didichuxing.com
+ * @Author wangjianzhou
  * @Date 2021/11/25 2:12 PM
  */
 public class ViewPager2ViewAdapter extends RecyclerView.Adapter<ViewPager2ViewAdapter.VH> {

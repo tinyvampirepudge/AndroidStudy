@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * @Description: TODO
- * @Author wangjianzhou@didichuxing.com
+ * @Author wangjianzhou
  * @Date 2022/3/8 10:51 AM
  */
 public class CustomRecyclerView extends RecyclerView {

@@ -24,7 +24,9 @@ import com.tinytongtong.androidstudy.jsonparse.JsonParseTestActivity
 import com.tinytongtong.androidstudy.launchmode.SingleTaskTestActivity
 import com.tinytongtong.androidstudy.measure.MeasureLayoutDrawEntryActivity
 import com.tinytongtong.androidstudy.nestedscrolling.CustomNestedScrollActivity
+import com.tinytongtong.androidstudy.okhttp.OkHttpActivity
 import com.tinytongtong.androidstudy.recyclerview.RecyclerViewEntryActivity
+import com.tinytongtong.androidstudy.retrofit.RetrofitActivity
 import com.tinytongtong.androidstudy.rxjava.RxJavaActivity
 import com.tinytongtong.androidstudy.screenadapt.ScreenAdaptActivity
 import com.tinytongtong.androidstudy.templates.adaptertemplate.TemplatesTestActivity
@@ -162,6 +164,16 @@ class MainActivity : AppCompatActivity() {
         // Measure绘制流程
         btn_measure_traversal.setOnClickListener {
             MeasureLayoutDrawEntryActivity.actionStart(this)
+        }
+
+        // okhttp
+        btn_okhttp.setOnClickListener {
+            startActivity(Intent(this, OkHttpActivity::class.java))
+        }
+
+        // retrofit
+        btn_retrofit.setOnClickListener {
+            startActivity(Intent(this, RetrofitActivity::class.java))
         }
     }
 }

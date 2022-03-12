@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.activity_single_task_test2.*
 /**
  * @Description: SingleTask相关校验
  *
- * @Author wangjianzhou@didichuxing.com
+ * @Author wangjianzhou
  * @Date 2021/12/23 3:47 PM
  */
 class SingleTaskTest2Activity : AppCompatActivity() {

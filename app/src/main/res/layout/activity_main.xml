@@ -225,6 +225,22 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_single_task" />
+
+        <Button
+            android:id="@+id/btn_okhttp"
+            style="@style/btn_style_lower"
+            android:text="okhttp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_measure_traversal" />
+
+        <Button
+            android:id="@+id/btn_retrofit"
+            style="@style/btn_style_lower"
+            android:text="retrofit"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_okhttp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>
