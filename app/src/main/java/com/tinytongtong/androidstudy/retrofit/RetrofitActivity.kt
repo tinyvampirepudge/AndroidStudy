@@ -5,7 +5,10 @@ import android.os.Bundle
 import android.util.Log
 import com.tinytongtong.androidstudy.R
 import com.tinytongtong.androidstudy.retrofit.SimpleService.Contributor
+import kotlinx.android.synthetic.main.activity_retrofit.*
 import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -24,21 +27,35 @@ class RetrofitActivity : AppCompatActivity() {
         setContentView(R.layout.activity_retrofit)
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.github.com/")
+            .baseUrl("https://api.github.com")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
         val service = retrofit.create(GitHubService::class.java)
 
-        val repos: Call<List<Repo>> = service.listRepos("octocat")
+        btn_github_repos.setOnClickListener {
+            val repos: Call<List<GithubRepo>> = service.listRepos("tinyvampirepudge")
 
-        // Fetch and print a list of the contributors to the library.
-        val repoList: List<Repo>? = repos.execute().body()
-        repoList?.also {
-            for (repo in it) {
-                Log.e("RetrofitActivity", "repo:" + repo);
-            }
+            // Fetch and print a list of the contributors to the library.
+            repos.enqueue(object : Callback<List<GithubRepo>> {
+                override fun onResponse(
+                    call: Call<List<GithubRepo>>,
+                    response: Response<List<GithubRepo>>
+                ) {
+                    Log.e("RetrofitActivity", "onResponse")
+                    val list: List<GithubRepo>? = response.body()
+                    list?.also {
+                        for (repo in it) {
+                            Log.e("RetrofitActivity", "repo:" + repo)
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<List<GithubRepo>>, t: Throwable) {
+                    Log.e("RetrofitActivity", "onFailure t:" + t.toString())
+                }
+
+            })
         }
-
     }
 }

@@ -13,6 +13,6 @@ import retrofit2.http.Path;
  * @Date 2022/3/12 11:15 PM
  */
 public interface GitHubService {
-    @GET("users/{user}/repos")
-    Call<List<Repo>> listRepos(@Path("user") String user);
+    @GET("/users/{user}/repos")
+    Call<List<GithubRepo>> listRepos(@Path("user") String user);
 }
