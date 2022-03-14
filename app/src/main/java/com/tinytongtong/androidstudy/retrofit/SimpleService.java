@@ -31,14 +31,6 @@ public class SimpleService {
         }
     }
 
-    public interface GitHub {
-        @GET("/repos/{owner}/{repo}/contributors")
-        Call<List<Contributor>> contributors(@Path("owner") String owner, @Path("repo") String repo);
-
-        @GET("/users/{user}/repos")
-        Call<List<GithubRepo>> listRepos(@Path("user") String user);
-    }
-
     public static void main(String... args) throws IOException {
         // Create a very simple REST adapter which points the GitHub API.
         Retrofit retrofit =
@@ -48,7 +40,7 @@ public class SimpleService {
                         .build();
 
         // Create an instance of our GitHub API interface.
-        GitHub github = retrofit.create(GitHub.class);
+        GitHubApi github = retrofit.create(GitHubApi.class);
 
         // Create a call instance for looking up Retrofit contributors.
         Call<List<Contributor>> call = github.contributors("square", "retrofit");
