@@ -6,4 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".classloader.ClassLoaderTestActivity">
 
+
+    <Button
+        android:id="@+id/btn_say"
+        style="@style/btn_style_lower"
+        android:text="say"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
