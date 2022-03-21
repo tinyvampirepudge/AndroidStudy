@@ -11,6 +11,7 @@ import com.tinytongtong.androidstudy.aidl.BinderTestActivity
 import com.tinytongtong.androidstudy.anim.ActivityAnimActivity
 import com.tinytongtong.androidstudy.anim.breath.BreathAnimActivity
 import com.tinytongtong.androidstudy.bitmap.BitmapEntryActivity
+import com.tinytongtong.androidstudy.classloader.ClassLoaderTestActivity
 import com.tinytongtong.androidstudy.componentcallbacks.ComponentCallbacksActivity
 import com.tinytongtong.androidstudy.constraintlayout.ConstraintLayoutTestActivity
 import com.tinytongtong.androidstudy.dialog.DialogWithVariousCtxActivity
@@ -174,6 +175,11 @@ class MainActivity : AppCompatActivity() {
         // retrofit
         btn_retrofit.setOnClickListener {
             startActivity(Intent(this, RetrofitActivity::class.java))
+        }
+
+        // class loader
+        btn_class_loader.setOnClickListener {
+            ClassLoaderTestActivity.actionStart(this);
         }
     }
 }
