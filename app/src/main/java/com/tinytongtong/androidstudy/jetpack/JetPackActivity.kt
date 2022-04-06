@@ -26,8 +26,10 @@ class JetPackActivity : AppCompatActivity() {
         setContentView(view)
 
         viewBinding.btnLivedata.setOnClickListener {
-            Toast.makeText(JetPackActivity@ this, "猫了个咪", Toast.LENGTH_SHORT).show()
             LiveDataActivity.actionStart(this)
+        }
+        viewBinding.btnDataBinding.setOnClickListener {
+            DataBindingActivity.actionStart(this)
         }
     }
 }

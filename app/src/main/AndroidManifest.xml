@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".jetpack.LiveDataActivity"></activity>
+        <activity android:name=".jetpack.DataBindingActivity"></activity>
+        <activity android:name=".jetpack.LiveDataActivity" />
         <activity android:name=".jetpack.JetPackActivity" />
         <activity
             android:name=".classloader.ClassLoaderTestActivity"
