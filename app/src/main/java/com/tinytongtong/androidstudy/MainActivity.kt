@@ -21,6 +21,7 @@ import com.tinytongtong.androidstudy.eventbus.EventBusActivity
 import com.tinytongtong.androidstudy.framework.chapter901.TransactionTooLargeExceptionActivity
 import com.tinytongtong.androidstudy.glide.GlideTestActivity
 import com.tinytongtong.androidstudy.handler.HandlerTestActivity
+import com.tinytongtong.androidstudy.jetpack.JetPackActivity
 import com.tinytongtong.androidstudy.jsonparse.JsonParseTestActivity
 import com.tinytongtong.androidstudy.launchmode.SingleTaskTestActivity
 import com.tinytongtong.androidstudy.measure.MeasureLayoutDrawEntryActivity
@@ -180,6 +181,10 @@ class MainActivity : AppCompatActivity() {
         // class loader
         btn_class_loader.setOnClickListener {
             ClassLoaderTestActivity.actionStart(this);
+        }
+
+        btn_jetpack.setOnClickListener {
+            JetPackActivity.actionStart(this);
         }
     }
 }
