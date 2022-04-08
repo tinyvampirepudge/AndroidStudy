@@ -4,6 +4,7 @@ import android.graphics.PixelFormat
 import android.os.Build
 import android.os.Bundle
 import android.os.Looper
+import android.util.Log
 import android.view.WindowManager
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -25,6 +26,10 @@ class ValidateUiInSubThreadActivity : AppCompatActivity() {
 
         val tv = TextView(this)
         tv.text = "猫了个咪"
+        Log.e("ValidateUiInSubThread","猫了个咪")
+        btn_validate_ui_in_sub_thread.post {
+            Log.e("ValidateUiInSubThread","tv : ${tv.measuredHeight}, ${tv.measuredHeight}")
+        }
 
         btn_validate_ui_in_sub_thread.setOnClickListener {
             Thread {
